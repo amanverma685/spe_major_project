@@ -3,12 +3,9 @@ import SideNavBar from '../Components/SideNavBar'
 
 function Home() {
   return (
-    <>
-    {/* <SideNavBar /> */}
-    <div className='center'>
+    <div>
       home
     </div>
-    </>
   )
 }
 

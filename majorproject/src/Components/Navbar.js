@@ -8,10 +8,10 @@ import { Book } from "@mui/icons-material";
 export default function () {
   const { collapseSidebar } = useProSidebar();
   return (
-    <div style={{ display: "flex", height: "100%" }}>
+    <div >
      <Sidebar className='my-custome-sidebar'
         rootStyles={{
-              height:"80vh"
+              height:"100vh"
           }}
     >
         <Menu>
@@ -28,6 +28,9 @@ export default function () {
           </MenuItem>
           <MenuItem component={<Link to="/ViewProject" />}>
             <BookOutlinedIcon /> Projects
+          </MenuItem>
+          <MenuItem component={<Link to="/Registration" />}>
+            <BookOutlinedIcon /> Registration
           </MenuItem>
           <MenuItem component={<Link to="/Login" />}>
             <BookOutlinedIcon /> Login

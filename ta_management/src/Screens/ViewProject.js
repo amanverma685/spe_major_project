@@ -1,13 +1,11 @@
 import React from 'react'
-
-
-function AddProject() {
+function ViewProject() {
   return (
     <>
     {/* <SideNavBar /> */}
-    <div>AddProject</div>
+    <div>ViewProject</div>
     </>
   )
 }
 
-export default AddProject
+export default ViewProject

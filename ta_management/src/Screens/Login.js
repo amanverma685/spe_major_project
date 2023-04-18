@@ -43,7 +43,7 @@ function Login() {
         <input className="border border-gray-300 px-3 py-2 w-full rounded-md focus:outline-none focus:ring focus:border-blue-500" type="password" name="password" id="password" onChange={handlePasswordChange} required/>
       </div>
       <button className="bg-blue-500 hover:bg-blue-600 text-center text-white py-2 px-4 rounded-md focus:outline-none focus:ring focus:border-blue-500" type="submit">Login</button>
-    </form>
+    </form> 
   </div>
  
         

@@ -46,9 +46,9 @@ export default function () {
           <MenuItem component={<Link to="/ViewProject" />}>
            <InsightsIcon /> Projects
           </MenuItem>
-          <MenuItem component={<Link to="/Registration" />}>
+          {/* <MenuItem component={<Link to="/Registration" />}>
             <HowToRegIcon /> Registration
-          </MenuItem>
+          </MenuItem> */}
           {/* <MenuItem component={<Link to="/Login" />}>
             <BookOutlinedIcon /> 
             Login

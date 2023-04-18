@@ -4,48 +4,55 @@ export default[
         "name":"Shivi",
         "subject":"SPE",
         "grade":'3.24',
+        "email":"shivi@123.gmail.com",
         "achievements":"lhjbjdebcde bjsbchhwchjeb"
     },
     {
         "id":2,
-        "name":"Shivi",
+        "name":"Riya",
         "subject":"SPE",
         "grade":'3.24',
+        "email":"riya@123.gmail.com",
         "achievements":"lhjbjdebcde bjsbchhwchjeb"
     },
     {
         "id":3,
-        "name":"Shivi",
+        "name":"Neha",
         "subject":"SPE",
         "grade":'3.24',
+        "email":"shivi@123.gmail.com",
         "achievements":"lhjbjdebcde bjsbchhwchjeb"
     },
     {
         "id":4,
-        "name":"Shivi",
+        "name":"Nimmi",
         "subject":"SPE",
         "grade":'3.24',
+        "email":"shivi@123.gmail.com",
         "achievements":"lhjbjdebcde bjsbchhwchjeb"
     },
     {
         "id":5,
-        "name":"Shivi",
+        "name":"Priya",
         "subject":"SPE",
         "grade":'3.24',
+        "email":"shivi@123.gmail.com",
         "achievements":"lhjbjdebcde bjsbchhwchjeb"
     },
     {
         "id":1,
-        "name":"Shivi",
+        "name":"Aditi",
         "subject":"SPE",
         "grade":'3.24',
+        "email":"aditi@123.gmail.com",
         "achievements":"lhjbjdebcde bjsbchhwchjeb"
     },
     {
         "id":2,
-        "name":"Shivi",
+        "name":"Neha",
         "subject":"SPE",
         "grade":'3.24',
+        "email":"neha@123.gmail.com",
         "achievements":"lhjbjdebcde bjsbchhwchjeb"
     },
     {
@@ -53,6 +60,7 @@ export default[
         "name":"Shivi",
         "subject":"SPE",
         "grade":'3.24',
+        "email":"shivi@123.gmail.com",
         "achievements":"lhjbjdebcde bjsbchhwchjeb"
     },
     {
@@ -60,6 +68,7 @@ export default[
         "name":"Shivi",
         "subject":"SPE",
         "grade":'3.24',
+        "email":"shivi@123.gmail.com",
         "achievements":"lhjbjdebcde bjsbchhwchjeb"
     },
     {
@@ -67,6 +76,7 @@ export default[
         "name":"Shivi",
         "subject":"SPE",
         "grade":'3.24',
+        "email":"shivi@123.gmail.com",
         "achievements":"lhjbjdebcde bjsbchhwchjeb"
     },
    

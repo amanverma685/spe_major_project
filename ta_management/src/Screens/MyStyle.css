@@ -16,12 +16,18 @@
 }
 body{
   height: 100vh;
-  display: flex;
+  /* display: flex; */
   /* justify-content: center; */
   /* align-items: center; */
   /* padding: 10px; */
-  background: linear-gradient(135deg, #71b7e6, #5168c5);
+  background: linear-gradient(135deg, #b9cdef, #4f7be8);
+  /* background-color: red; */
 }
+
+#root {
+  width: 100%;
+}
+
 .container{
   /* max-width: 1000px;
   max-height:1000px; */

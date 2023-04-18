@@ -25,12 +25,12 @@ export default function () {
 
   }
   return (
-    <div >
+    <div style={{ display: 'flex', height: '100%' }}>
      <Sidebar className='my-custome-sidebar'
-        rootStyles={{
-              height:"100vh"
-          }}
-    >
+      rootStyles={{
+        height:"100vh"
+    }}
+>
         <Menu>
           <main>
             <button onClick={() => collapseSidebar()}>
@@ -41,7 +41,7 @@ export default function () {
             <HomeIcon /> Home
           </MenuItem>
           <MenuItem component={<Link to="/AddProject" />}>
-            <AddIcon/> Add Project
+            <AddIcon/> TA list
           </MenuItem>
           <MenuItem component={<Link to="/ViewProject" />}>
            <InsightsIcon /> Projects

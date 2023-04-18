@@ -14,10 +14,10 @@ const { collapseSidebar} = useProSidebar();
 return (
     <div style={{ display: 'flex', height: '100%' }}>
       <Sidebar className='my-custome-sidebar'
-        rootStyles={{
-              height:"100vh"
-          }}
-    >
+         rootStyles={{
+          height:"100vh"
+      }}
+>
         <button onClick={() => {
             collapseSidebar();
         }}>

@@ -21,23 +21,27 @@ function App() {
   },[loggedinUser]);
   return (
     <GlobalContext.Provider value={{loggedinUser, setLoggedinUser}}>
-    <div className="App flex flex-row">
-       <div >
+    <div className="flex flex-row">
+       <div style= {{}} >
         {
           (loggedinUser===null) && <Login/>
         }
         {
           (loggedinUser!==null) && <SideNavbar/> 
         }
-    </div>
+    </div >
      {/* <div className="flex-3"> */}
-    <div >
-
+    {/* <div style={{
+      display: "flex",
+      flex: 1,
+    }}> */}
+  <div className="flex-1">
       <Routes>
         {
           (loggedinUser===null) ? <Route exact path="/" element={<Login/>}/>
+          
                                 : <>
-                                  <Route path="/Registration" element={<Registration/>} />
+                                   <Route path="/Registration" element={<Registration/>} />
                                   <Route path="/Home" element={<Home />} />
                                   <Route path="/ViewProject" element={<ViewProject />} />
                                   <Route path="/AddProject" element={<AddProject />} />

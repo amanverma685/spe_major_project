@@ -14,6 +14,7 @@ export default[
         "subject":"SPE",
         "grade":'3.24',
         "email":"riya@123.gmail.com",
+        "url":"https://pbs.twimg.com/profile_images/1485050791488483328/UNJ05AV8_400x400.jpg",
         "achievements":"lhjbjdebcde bjsbchhwchjeb"
     },
     {
@@ -22,6 +23,7 @@ export default[
         "subject":"SPE",
         "grade":'3.24',
         "email":"shivi@123.gmail.com",
+        "url":"https://pbs.twimg.com/profile_images/1485050791488483328/UNJ05AV8_400x400.jpg",
         "achievements":"lhjbjdebcde bjsbchhwchjeb"
     },
     {
@@ -30,6 +32,7 @@ export default[
         "subject":"SPE",
         "grade":'3.24',
         "email":"shivi@123.gmail.com",
+        "url":"https://pbs.twimg.com/profile_images/1485050791488483328/UNJ05AV8_400x400.jpg",
         "achievements":"lhjbjdebcde bjsbchhwchjeb"
     },
     {
@@ -38,6 +41,7 @@ export default[
         "subject":"SPE",
         "grade":'3.24',
         "email":"shivi@123.gmail.com",
+        "url":"https://pbs.twimg.com/profile_images/1485050791488483328/UNJ05AV8_400x400.jpg",
         "achievements":"lhjbjdebcde bjsbchhwchjeb"
     },
     {
@@ -46,6 +50,7 @@ export default[
         "subject":"SPE",
         "grade":'3.24',
         "email":"aditi@123.gmail.com",
+        "url":"https://pbs.twimg.com/profile_images/1485050791488483328/UNJ05AV8_400x400.jpg",
         "achievements":"lhjbjdebcde bjsbchhwchjeb"
     },
     {
@@ -54,6 +59,7 @@ export default[
         "subject":"SPE",
         "grade":'3.24',
         "email":"neha@123.gmail.com",
+        "url":"https://pbs.twimg.com/profile_images/1485050791488483328/UNJ05AV8_400x400.jpg",
         "achievements":"lhjbjdebcde bjsbchhwchjeb"
     },
     {
@@ -70,6 +76,7 @@ export default[
         "subject":"SPE",
         "grade":'3.24',
         "email":"shivi@123.gmail.com",
+        "url":"https://pbs.twimg.com/profile_images/1485050791488483328/UNJ05AV8_400x400.jpg",
         "achievements":"lhjbjdebcde bjsbchhwchjeb"
     },
     {
@@ -78,6 +85,7 @@ export default[
         "subject":"SPE",
         "grade":'3.24',
         "email":"shivi@123.gmail.com",
+        "url":"https://pbs.twimg.com/profile_images/1485050791488483328/UNJ05AV8_400x400.jpg",
         "achievements":"lhjbjdebcde bjsbchhwchjeb"
     },
    

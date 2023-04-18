@@ -1,10 +1,11 @@
 import React from "react";
 
 export default function StudentDetails(props) {
-  console.log(props);
-  const { onClose, show, id, name } = { ...props };
+
+  const { onClose, show, id, name ,value} = { ...props };
   const handleaccept =()=>{ console.log("accepted")}
   const handlereject =()=>{console.log("rejected")}
+  
 
   // if(!show){
   //     return null
@@ -37,17 +38,19 @@ export default function StudentDetails(props) {
               className="bg-black text-center text-white py-1 px-4 rounded-md focus:outline-none focus:ring focus:border-blue-500"
               onClick={() => {
                 onClose(false);
-                // console.log("show value on close button",show)
+                console.log("show value on close button",show)
               }}
             >
               Close
             </button>
+          
             <button
               className="bg-black text-center m-2 text-white py-1 px-4 rounded-md focus:outline-none focus:ring focus:border-blue-500"
             onClick={handleaccept}
             >
               Accept 
             </button>
+         
             <button
               className="bg-black text-center text-white py-1 px-4 rounded-md focus:outline-none focus:ring focus:border-blue-500"
             onClick={handlereject}

@@ -53,7 +53,15 @@ function AddProject() {
             {
         (value===1) && (
           <>
-          This is page 1
+         <div className='overflow-auto' style={{height:'90vh'}}>
+            <h1 className='font-semibold' > List of student requested for TAship</h1>
+            <div className='my-3'>
+                {console.log(requested)}
+                {requested.map((e, i) => {
+                    return <DisplayCard e={e} key={i} value={0}/>
+                })}
+            </div>
+        </div>
           </>
         )
       }

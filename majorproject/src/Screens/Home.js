@@ -1,9 +1,23 @@
 import React from 'react'
-
+import {Line} from 'react-chartjs-2'
+import Chart from 'chart.js/auto';
 
 function Home() {
+  const data={
+    labels:['Jan','Feb','Mar','Apr','May'],
+    datasets:[
+      {
+        label:'Number of requests received',
+        data:[3,2,2,4,1]
+      },
+      {
+        label:'Number of accepted received',
+        data:[1,2,1,4,1]
+      }
+    ]
+  }
   return (
-    <div>
+    
      <div className="container">
       <div className="grid grid-cols-3 gap-4">
       <div className="max-w-md mx-auto bg-pink-200 rounded-xl shadow-md overflow-hidden ">
@@ -37,10 +51,13 @@ function Home() {
             </h2>
         </div>
       </div> 
-      </div> 
+      </div>
+      <div className='h-80 w-100 mt-4'>
+       <Line data={data}/>  
+       </div>
     </div>
     
-    </div>
+ 
   )
 }
 

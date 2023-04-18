@@ -1,17 +1,10 @@
-  /* .App {
-    display: flex;
-  }
-   */
-  /* main {
-    padding: 10px;
-  } */
-  .signout {
+/* .signout {
     bottom: 50%;
     width: 100%;
     text-align: center;
     background-color: #1b3fe0;
     border-top: 1px solid #1a0505;
-  }
+  } */
   
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *{
@@ -23,10 +16,6 @@
 }
 body{
   height: 100vh;
-  display: flex;
-  /* justify-content: center; */
-  /* align-items: center; */
-  /* padding: 10px; */
   background: linear-gradient(135deg, #71b7e6, #5168c5);
 }
 .container{

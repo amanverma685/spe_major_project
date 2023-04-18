@@ -3,7 +3,8 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
-import BookOutlinedIcon from '@mui/icons-material/BookOutlined';
+import AddIcon from '@mui/icons-material/Add';
+import InsightsIcon from '@mui/icons-material/Insights';
 import { Button } from '@mui/material';
 
 
@@ -27,13 +28,12 @@ return (
           <MenuItem component={<Link to={"/Home"}/>}> 
           <HomeIcon />Home
           </MenuItem>
-          <MenuItem component={<Link to={"/ViewProject"}/>}><BookOutlinedIcon/> Projects</MenuItem>
-          <MenuItem component={<Link to={"/AddProject"}/>}> <BookOutlinedIcon/>Add Projects</MenuItem>
-          <MenuItem component={<Link to={"/Login"}/>}> <BookOutlinedIcon/>New Login</MenuItem>
-          <Button className="signout bg-slate-600 rounded-sm h-7 w-20 text-white " onClick={props.signOut}>Sign out</Button>
+          <MenuItem component={<Link to={"/ViewProject"}/>}><InsightsIcon/> Projects</MenuItem>
+          <MenuItem component={<Link to={"/AddProject"}/>}> <AddIcon/> TA list</MenuItem>
+          <Button className="signout bg-black rounded-sm h-10 w-30 text-white " onClick={props.signOut}>Sign out</Button>
         </Menu>
       </Sidebar>
-    // </div>
+    </div>
   );
 }
 

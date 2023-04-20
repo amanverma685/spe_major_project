@@ -7,6 +7,9 @@ import Registration from "./Screens/Registration";
 import { Authenticator } from "@aws-amplify/ui-react";
 import SideNavBar from "./Components/SideNavBar";
 import Login   from "./Screens/Login";
+import StudentFormTA from "./StudentScreens/StudentFormTA";
+import DisplayTaships from "./StudentScreens/DisplayTaships";
+import StudentNotification from "./StudentScreens/StudentNotification";
 
 function App() {
   return (
@@ -26,6 +29,8 @@ function App() {
          <Route path="/Home" element={<Home />} />
          <Route path="/ViewProject" element={<ViewProject />} />
          <Route path="/AddProject" element={<AddProject />} />
+         <Route path="/Registration" element={<Registration />} />
+         <Route path='/TAForm' element={<StudentNotification/>}/>
        </Routes>
        </div>
      </div>

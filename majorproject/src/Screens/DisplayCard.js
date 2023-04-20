@@ -13,25 +13,25 @@ export default function DisplayCard(props) {
 
       <div className='flex flex-row'>
       <div className="px-4 py-2 m-2">
-      <div className="text-xl font-semibold">{props.e.id}</div>
+      <div className="text-sm">Roll Number: {props.e.id}</div>
       </div>
       <div className="px-4 py-2 m-2">
-      <div className="text-xl font-semibold">{props.e.name}</div>
+      <div className="text-sm">Name: {props.e.name}</div>
       </div>
       <div className="px-4 py-2 m-2">
-      <div className="text-xl font-semibold">{props.e.grade}</div>
+      <div className="text-sm">Grade: {props.e.grade}</div>
       </div>
       <div className="px-4 py-2 m-2">
-      <div className="text-xl font-semibold">{props.e.email}</div>
+      <div className="text-sm">Email: {props.e.email}</div>
       </div>
       <div className="px-4 py-2 m-2">
-      <div className="text-xl font-semibold">{props.e.subject}</div>
+      <div className="text-sm">Subject: {props.e.subject}</div>
       </div>
       {/* <div className="px-4 py-2 m-2">
       <div className="text-xl ">{props.e.achievements}</div>
       </div> */}
       <div className="px-4 py-2 m-2">
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-semi justify-end rounded-lg w-40 h-10" 
+        <button className="bg-blue-500 hover:bg-blue-700 text-white justify-end rounded-lg w-40 h-10 m-1" 
         onClick={()=>setShow(true)}>
           View Details 
         </button>

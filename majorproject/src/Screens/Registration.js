@@ -24,6 +24,8 @@ function Registration() {
           contact_no:"",
           gender:"",
           dob:"",
+          subject:"",
+          qualifictaion:""
         })
     }
   return (
@@ -83,7 +85,7 @@ function Registration() {
           <div className="input-box">
             <span className="details">DOB</span>
             <input
-              type="text"
+              type="date"
               placeholder="Enter your age"
               id="dob"
               name="dob"
@@ -92,8 +94,32 @@ function Registration() {
               onChange={onChange}
             />
           </div>
+          <div className="input-box">
+            <span className="details">Subject</span>
+            <input
+              type="text"
+              placeholder="Enter your subject"
+              id="subject"
+              name="subject"
+              required
+              value={professor.subject}
+              onChange={onChange}
+            />
           </div>
-        <div className="button ">
+          <div className="input-box">
+            <span className="details">Qualification</span>
+            <input
+              type="text"
+              placeholder="Enter your full name"
+              id="qualifictaion"
+              name="qualifictaion"
+              required
+              value={professor.qualifictaion}
+              onChange={onChange}
+            />
+          </div>
+          </div>
+        <div className="button">
           <input type="submit" value="Register" />
         </div>
         

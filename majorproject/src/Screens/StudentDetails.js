@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 
 export default function StudentDetails(props) {
 
   const { onClose, show, id, name ,value} = { ...props };
+  const [isDisabled, setIsDisabled] = useState(true);
+
   const handleaccept =()=>{ console.log("accepted")}
   const handlereject =()=>{console.log("rejected")}
   
@@ -38,7 +40,7 @@ export default function StudentDetails(props) {
               className="bg-black text-center text-white py-1 px-4 rounded-md focus:outline-none focus:ring focus:border-blue-500"
               onClick={() => {
                 onClose(false);
-                console.log("show value on close button",show)
+                // console.log("show value on close button",show)
               }}
             >
               Close
@@ -46,11 +48,12 @@ export default function StudentDetails(props) {
           
             <button
               className="bg-black text-center m-2 text-white py-1 px-4 rounded-md focus:outline-none focus:ring focus:border-blue-500"
-            onClick={handleaccept}
+              onClick={handleaccept} 
             >
               Accept 
             </button>
-         
+              {/* <button  className="bg-black text-center text-white py-1 px-4 rounded-md focus:outline-none focus:ring focus:border-blue-500"
+               disabled={true}> disabled</button> */}
             <button
               className="bg-black text-center text-white py-1 px-4 rounded-md focus:outline-none focus:ring focus:border-blue-500"
             onClick={handlereject}

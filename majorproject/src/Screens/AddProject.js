@@ -39,7 +39,7 @@ function AddProject() {
         (value===0) && (
           <>
           <div className='overflow-auto' style={{height:'90vh'}}>
-            <h1 className='font-semibold' > List of student requested for TAship</h1>
+            <h1 className='font-semibold text-center m-3' > List of student requested for TAship</h1>
             <div className='my-3'>
                 {console.log(requested)}
                 {requested.map((e, i) => {

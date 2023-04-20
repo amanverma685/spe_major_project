@@ -6,6 +6,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import AddIcon from '@mui/icons-material/Add';
 import InsightsIcon from '@mui/icons-material/Insights';
 import { Button } from '@mui/material';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
 
 function SideNavBar(props) {
@@ -30,7 +31,9 @@ return (
           </MenuItem>
           <MenuItem component={<Link to={"/ViewProject"}/>}><InsightsIcon/> Projects</MenuItem>
           <MenuItem component={<Link to={"/AddProject"}/>}> <AddIcon/> TA list</MenuItem>
-          <Button className="signout bg-black rounded-sm h-10 w-30 text-white " onClick={props.signOut}>Sign out</Button>
+          <MenuItem component={<Link to={"/Registration"}/>}> <PersonAddIcon/>Registration</MenuItem>
+          <MenuItem component={<Link to={"/TAForm"}/>}> <PersonAddIcon/>TA Form</MenuItem>
+          <Button className="signout bg-black rounded-sm h-10 w-30 text-white  absolute bottom-0 left-10" onClick={props.signOut}>Sign out</Button>
         </Menu>
       </Sidebar>
     </div>

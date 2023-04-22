@@ -15,26 +15,30 @@ function App() {
   return (
     <Authenticator>
     {({ signOut, user }) => {
-      console.log(user);
+      // console.log("login User")
+      // console.log(user.attributes['custom:user_id'] );
+      sessionStorage.setItem('token', user.signInUserSession.idToken.jwtToken);
+      sessionStorage.setItem('user_id', user.attributes['custom:user_id']);
+
       return(
-        <main>  
-       <div className="flex flex-row">
-       <div>
-       <SideNavBar signOut={signOut}/>
-       </div>
-       
-       <div className="flex-1">
-         <Routes>
-         {/* <Route path="/Login" element={<Login/>} /> */}
-         <Route path="/Home" element={<Home />} />
-         <Route path="/ViewProject" element={<ViewProject />} />
-         <Route path="/AddProject" element={<AddProject />} />
-         <Route path="/Registration" element={<Registration />} />
-         <Route path='/TAForm' element={<StudentNotification/>}/>
-       </Routes>
-       </div>
-     </div>
-        </main>
+      <main>  
+        <div className="flex flex-row">
+          <div>
+            <SideNavBar signOut={signOut}/>
+          </div>
+          
+          <div className="flex-1">
+            <Routes>
+              {/* <Route path="/Login" element={<Login/>} /> */}
+              <Route path="/Home" element={<Home />} />
+              <Route path="/ViewProject" element={<ViewProject />} />
+              <Route path="/AddProject" element={<AddProject />} />
+              <Route path="/Registration" element={<Registration />} />
+              <Route path='/TAForm' element={<StudentNotification/>}/>
+            </Routes>
+          </div>
+        </div>
+      </main>
       )
     }}
     </Authenticator>

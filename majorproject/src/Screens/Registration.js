@@ -1,12 +1,40 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import '../Screens/MyStyle.css'
+import axios from "axios";
+import Home from './Home';
+
 function Registration() {
   
   const [userType,setUserType]=useState(false);
+
+  const [showRegistrationForm,setShowRegistrationForm]=useState(false);
   useEffect(() => {
-    
+    getUserDetails();
   }, [userType])
+
+  const getUserDetails=async()=>{
+
+    const token =  sessionStorage.getItem('token');
+    const user_id =  sessionStorage.getItem('user_id');
+   
+    let config = {
+      method: 'get',
+      maxBodyLength: Infinity,
+      url: 'https://tglog3gqb6.execute-api.ap-south-1.amazonaws.com/dev/user_registration/'+user_id,
+      headers: { 
+        'Authorization': 'Bearer '+token
+      }
+    };
+    axios.request(config)
+    .then((response) => {
+      setShowRegistrationForm(response.data.responseData);
+      console.log(showRegistrationForm);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
   
 
   const [professor, setProfessor] = useState({
@@ -65,6 +93,10 @@ function Registration() {
 
   return (
     <>
+    {
+      (showRegistrationForm===false)?
+      (
+        <>
     {
       (userType===false)?(
       <div>
@@ -273,13 +305,17 @@ function Registration() {
           <div className="button">
             <input type="submit" value="Register" />
           </div>
-          
         </form>
       </div>
     </div>
   </div>
   
     )
+    }
+    </>
+      ):(
+        <Home />
+      )
     }
     </>
   )

@@ -7,35 +7,10 @@ import TARequirements from "./TARequirements";
 import axios from 'axios'
 import Registration from "./Registration";
 function Home() {
+
   const [show, setShow] = useState(false);
-  const [showRegistrationForm,setShowRegistrationForm]=useState(false);
 
-  useEffect(() => {
-  getUserDetails();
-  }, [])
-  
-  const getUserDetails=async()=>{
 
-    const token =  sessionStorage.getItem('token');
-    const user_id =  sessionStorage.getItem('user_id');
-   
-    let config = {
-      method: 'get',
-      maxBodyLength: Infinity,
-      url: 'https://tglog3gqb6.execute-api.ap-south-1.amazonaws.com/dev/user_registration/'+user_id,
-      headers: { 
-        'Authorization': 'Bearer '+token
-      }
-    };
-    axios.request(config)
-    .then((response) => {
-      setShowRegistrationForm(response.data.responseData);
-      console.log(showRegistrationForm);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  }
 
   const data = {
     labels: ["Jan", "Feb", "Mar", "Apr", "May"],
@@ -57,11 +32,8 @@ function Home() {
     },
   };
   return (
-    <>
-    {
-      (!showRegistrationForm)===true ? <Registration /> :
-      (
-        <div className="container">
+      <div className="container">
+       
       <div className="grid grid-cols-3 gap-4">
         <div className="max-w-md mx-auto bg-pink-200 rounded-xl shadow-md overflow-hidden ">
           <div className="p-8">
@@ -112,9 +84,6 @@ function Home() {
         }
       </div>
     </div>
-      )
-    }
-    </>
   );
 }
 

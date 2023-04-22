@@ -10,13 +10,12 @@ import Login   from "./Screens/Login";
 import StudentFormTA from "./StudentScreens/StudentFormTA";
 import DisplayTaships from "./StudentScreens/DisplayTaships";
 import StudentNotification from "./StudentScreens/StudentNotification";
-
+import axios from "axios";
 function App() {
   return (
     <Authenticator>
     {({ signOut, user }) => {
-      // console.log("login User")
-      // console.log(user.attributes['custom:user_id'] );
+      
       sessionStorage.setItem('token', user.signInUserSession.idToken.jwtToken);
       sessionStorage.setItem('user_id', user.attributes['custom:user_id']);
 

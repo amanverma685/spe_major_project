@@ -68,31 +68,31 @@ function Registration() {
           gender:"",
           dob:"",
           subject:"",
-          qualifictaion:""
+          qualifictaion:"",
+          userType:"professor"
         })
     }
     const submitHandlerStudent =async(e) => {
       e.preventDefault();
-      console.log(professor);
-      setProfessor({
+      console.log(student);
+      setStudent({
         name:"",
         email:"",
         contact_no:"",
         gender:"",
         dob:"",
         subject:"",
-        qualifictaion:""
+        qualifictaion:"",
+        userType:"student"
       })
   }
 
   const registerUser=()=>{
-    if(userType==="Professor")
-    setUserType("Student");
+    if(userType==="professor")
+    setUserType("student");
     else 
-    setUserType("Professor")
-  }
-  
-  
+    setUserType("professor")
+  } 
 
   return (
     <>
@@ -101,7 +101,7 @@ function Registration() {
       (
         <>
     {
-      (userType==="Professor")?(
+      (userType==="professor")?(
       <div>
         <div className="container">
         <div className='flex flex-row justify-between'>

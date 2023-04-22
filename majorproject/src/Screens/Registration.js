@@ -6,7 +6,7 @@ import Home from './Home';
 
 function Registration() {
   
-  const [userType,setUserType]=useState(false);
+  const [userType,setUserType]=useState("Professor");
 
   const [showRegistrationForm,setShowRegistrationForm]=useState(false);
   useEffect(() => {
@@ -86,7 +86,10 @@ function Registration() {
   }
 
   const registerUser=()=>{
-    setUserType(!userType);
+    if(userType==="Professor")
+    setUserType("Student");
+    else 
+    setUserType("Professor")
   }
   
   
@@ -98,7 +101,7 @@ function Registration() {
       (
         <>
     {
-      (userType===false)?(
+      (userType==="Professor")?(
       <div>
         <div className="container">
         <div className='flex flex-row justify-between'>

@@ -18,7 +18,7 @@ function App() {
       
       sessionStorage.setItem('token', user.signInUserSession.idToken.jwtToken);
       sessionStorage.setItem('user_id', user.attributes['custom:user_id']);
-
+      sessionStorage.setItem('email', user.attributes['email']);
       return(
       <main>  
         <div className="flex flex-row">

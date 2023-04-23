@@ -6,7 +6,7 @@ import Home from "./Home";
 import Select from "react-select";
 
 function Registration() {
-  const [userType, setUserType] = useState("Professor");
+  const [userType, setUserType] = useState("professor");
 
   const [showRegistrationForm, setShowRegistrationForm] = useState(false);
   useEffect(() => {
@@ -80,25 +80,39 @@ function Registration() {
     // console.log(professor);
     // console.log(selectedSubjects);
 
-    const submitdata={
-      "professor":professor,
-      "subject":selectedSubjects,
-      "usertype":userType
-    }
-    console.log(submitdata)
-    // await axios.post(``,submitdata)
-    // .then((res)=>{
-    //   console.log(res.data)
-    // })
-    // .catch(err=>console.log(err))
+    const submitdata = {
+      fname: professor.fname,
+      mname: professor.mname,
+      lname: professor.lname,
+      email: professor.email,
+      dob: professor.dob,
+      contact: professor.contact,
+      qualifictaion: professor.qulaification,
+      subject: selectedSubjects,
+      userType: userType,
+    };
+    const token = sessionStorage.getItem("token");
+    console.log(submitdata);
+    await axios.post(`https://03wi9io086.execute-api.ap-south-1.amazonaws.com/dev/user_details/update_user`,
+    submitdata
+    ,{
+    headers: {
+      Authorization: "Bearer " + token,
+    }}
+    )
+    .then((res)=>{
+      // console.log(res.data)
+    })
+    .catch(err=>console.log(err))
 
     setProfessor({
-      name: "",
+      fname: "",
+      mname: "",
+      lname: "",
       email: "",
       contact: "",
       gender: "",
       dob: "",
-      subject: "",
       qualifictaion: "",
     });
   };
@@ -117,15 +131,15 @@ function Registration() {
   };
 
   const registerUser = () => {
-    if (userType === "Professor") setUserType("Student");
-    else setUserType("Professor");
+    if (userType === "professor") setUserType("student");
+    else setUserType("professor");
   };
 
   return (
     <>
       {showRegistrationForm === false ? (
         <>
-          {userType === "Professor" ? (
+          {userType === "professor" ? (
             <div>
               <div className="container">
                 <div className="flex flex-row justify-between">
@@ -227,9 +241,9 @@ function Registration() {
                           value={professor.qualifictaion}
                           onChange={onChange}
                         />
-                      </div > 
+                      </div>
                       <div className="m-4">
-                            <Select
+                        <Select
                           isMulti
                           options={subjects}
                           value={selectedSubjects}

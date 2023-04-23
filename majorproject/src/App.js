@@ -17,6 +17,7 @@ function App() {
     {({ signOut, user }) => {
       
       sessionStorage.setItem('token', user.signInUserSession.idToken.jwtToken);
+      // console.log(user.signInUserSession.idToken.jwtToken)
       sessionStorage.setItem('user_id', user.attributes['custom:user_id']);
       sessionStorage.setItem('email', user.attributes['email']);
       return(

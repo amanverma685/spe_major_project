@@ -1,11 +1,10 @@
 import React, { useState,useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import Chart from "chart.js/auto";
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import AddIcon from "@mui/icons-material/Add";
 import TARequirements from "./TARequirements";
 import axios from 'axios'
-import Registration from "./Registration";
+
 function Home() {
 
   const [show, setShow] = useState(false);

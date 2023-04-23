@@ -7,7 +7,7 @@ export default function DisplayCard(props) {
   
   
   return (
-    <div className="flex items-center shadow-lg shadow-black bg-gray-500  rounded-20 m-4">   
+    <div className="flex items-center shadow-lg shadow-black bg-white bg-opacity-25  rounded-20 m-4">   
     <img className="w-10 h-10 rounded-full" src={props.e.url} alt="Rounded avatar"/>
 
 

@@ -2,41 +2,45 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import "../Screens/MyStyle.css";
 import axios from "axios";
-import Home from "./Home";
+// import Home from "./Home";
 import Select from "react-select";
 
-function Registration() {
+function Registration({signOut}) {
   const [userType, setUserType] = useState("professor");
 
-  const [showRegistrationForm, setShowRegistrationForm] = useState(false);
-  useEffect(() => {
-    getUserDetails();
-  }, [userType]);
+  // const [showRegistrationForm, setShowRegistrationForm] = useState(false);
+  // // console.log(showRegistrationForm)
+  // useEffect(() => {
+  //   // getUserDetails();
+  // }, [userType]);
 
-  const getUserDetails = async () => {
-    const token = sessionStorage.getItem("token");
-    const user_id = sessionStorage.getItem("user_id");
+  // const getUserDetails = async () => {
+  //   console.log("get details called")
 
-    let config = {
-      method: "get",
-      maxBodyLength: Infinity,
-      url:
-        "https://tglog3gqb6.execute-api.ap-south-1.amazonaws.com/dev/user_registration/" +
-        user_id,
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    };
-    axios
-      .request(config)
-      .then((response) => {
-        setShowRegistrationForm(response.data.responseData);
-        console.log(showRegistrationForm);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  //   const token = sessionStorage.getItem("token");
+  //   const user_id = sessionStorage.getItem("user_id");
+
+  //   let config = {
+  //     method: "get",
+  //     maxBodyLength: Infinity,
+  //     url:
+  //       "https://tglog3gqb6.execute-api.ap-south-1.amazonaws.com/dev/user_registration/" +
+  //       user_id,
+  //     headers: {
+  //       Authorization: "Bearer " + token,
+  //     },
+  //   };
+  //   await axios
+  //     .request(config)
+  //     .then((response) => {
+  //       console.log(response.data)
+  //       setShowRegistrationForm(response.data.responseData);
+  //       // console.log(showRegistrationForm);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
 
   const [professor, setProfessor] = useState({
     fname: "",
@@ -101,7 +105,8 @@ function Registration() {
     }}
     )
     .then((res)=>{
-      // console.log(res.data)
+      console.log(res.data)
+      window.location.reload(true)
     })
     .catch(err=>console.log(err))
 
@@ -137,8 +142,9 @@ function Registration() {
 
   return (
     <>
-      {showRegistrationForm === false ? (
-        <>
+    <button  className="" onClick={signOut}>
+      Signout
+    </button>
           {userType === "professor" ? (
             <div>
               <div className="container">
@@ -271,7 +277,7 @@ function Registration() {
                     </button>
                   </div>
                 </div>
-                Home
+                
                 <div className="content">
                   <form className="Form " onSubmit={submitHandlerStudent}>
                     <div className="user-details">
@@ -368,10 +374,10 @@ function Registration() {
               </div>
             </div>
           )}
-        </>
+        {/* </>
       ) : (
         <Home />
-      )}
+      )} */}
     </>
   );
 }

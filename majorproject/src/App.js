@@ -15,7 +15,7 @@ function App() {
   return (
     <Authenticator>
     {({ signOut, user }) => {
-      console.log(user.signInUserSession.idToken.jwtToken)
+      // console.log(user.signInUserSession.idToken.jwtToken)
       sessionStorage.setItem('token', user.signInUserSession.idToken.jwtToken);
       // console.log(user.signInUserSession.idToken.jwtToken)
       sessionStorage.setItem('user_id', user.attributes['custom:user_id']);

@@ -36,7 +36,7 @@ export default function DisplayCard(props) {
           View Details 
         </button>
         {
-          (show === true) && <StudentDetails onClose={setShow} show={show} id={props.e.id} name={props.e.name} grade={props.e.subject} achievements={props.e.achievements} email={props.e.email} value={props.e.value} />
+          (show === true) && <StudentDetails onClose={setShow} show={show} id={props.e.id} name={props.e.name} grade={props.e.subject} achievements={props.e.achievements} email={props.e.email} value={value} />
         }
         </div>
       </div>

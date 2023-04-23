@@ -1,13 +1,16 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 export default function StudentDetails(props) {
-
-  const { onClose, show, id, name ,value} = { ...props };
+  const { onClose, show, id, name, value } = { ...props };
   const [isDisabled, setIsDisabled] = useState(true);
+  console.log(value)
 
-  const handleaccept =()=>{ console.log("accepted")}
-  const handlereject =()=>{console.log("rejected")}
-  
+  const handleaccept = () => {
+    console.log("accepted");
+  };
+  const handlereject = () => {
+    console.log("rejected");
+  };
 
   // if(!show){
   //     return null
@@ -26,41 +29,49 @@ export default function StudentDetails(props) {
             <div>
               <div className="text-gray-900">Roll Number: {props.id}</div>
               {/* <div className="font-bold text-black">{props.id}</div> */}
-              <div className="text-gray-900">Name:  {props.name}</div>
+              <div className="text-gray-900">Name: {props.name}</div>
               {/* <div className="font-bold text-black">{props.name}</div> */}
-              <div className="text-gray-900">Email:  {props.email}</div>
+              <div className="text-gray-900">Email: {props.email}</div>
               {/* <div className="font-bold text-black">{props.email}</div> */}
-              <div className="text-gray-900">Grade:  {props.grade}</div>
+              <div className="text-gray-900">Grade: {props.grade}</div>
               {/* <div className="font-bold text-black">{props.grade}</div> */}
-              <div className="text-gray-900">Achievement:  {props.achievements}</div>
+              <div className="text-gray-900">
+                Achievement: {props.achievements}
+              </div>
               {/* <div className="font-bold text-black">{props. achievements}</div> */}
             </div>
             <div className="flex flex-row">
-             <div><button
-              className="bg-black text-center text-white py-1 px-4 rounded-md focus:outline-none focus:ring focus:border-blue-500"
-              onClick={() => {
-                onClose(false);
-                // console.log("show value on close button",show)
-              }}
-            >
-              Close
-            </button>
-          
-            <button
-              className="bg-black text-center m-2 text-white py-1 px-4 rounded-md focus:outline-none focus:ring focus:border-blue-500"
-              onClick={handleaccept} 
-            >
-              Accept 
-            </button>
-              {/* <button  className="bg-black text-center text-white py-1 px-4 rounded-md focus:outline-none focus:ring focus:border-blue-500"
+              <div>
+                <button
+                  className="bg-black text-center text-white py-1 px-4 rounded-md focus:outline-none focus:ring focus:border-blue-500"
+                  onClick={() => {
+                    onClose(false);
+                    // console.log("show value on close button",show)
+                  }}
+                >
+                  Close
+                </button>
+                {(value === 0  ||  value==2) && (
+                  <button
+                    className="bg-black text-center m-2 text-white py-1 px-4 rounded-md focus:outline-none focus:ring focus:border-blue-500"
+                    onClick={handleaccept}
+                  >
+                    Accept
+                  </button>
+                )}
+
+                {/* <button  className="bg-black text-center text-white py-1 px-4 rounded-md focus:outline-none focus:ring focus:border-blue-500"
                disabled={true}> disabled</button> */}
-            <button
-              className="bg-black text-center text-white py-1 px-4 rounded-md focus:outline-none focus:ring focus:border-blue-500"
-            onClick={handlereject}
-            >
-              Reject
-            </button>
-            </div>
+               {(value === 0 || value ===1 ) && (
+                <button
+                  className="bg-black text-center text-white py-1 px-4 m-2 rounded-md focus:outline-none focus:ring focus:border-blue-500"
+                  onClick={handlereject}
+                >
+                  Reject
+                </button>
+                )}
+                
+              </div>
             </div>
           </div>
         </div>

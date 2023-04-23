@@ -43,7 +43,7 @@ function AddProject() {
             <div className='my-3'>
                 {console.log(requested)}
                 {requested.map((e, i) => {
-                    return <DisplayCard e={e} key={i} />
+                    return <DisplayCard e={e} key={i} value={0} />
                 })}
             </div>
         </div>
@@ -58,7 +58,7 @@ function AddProject() {
             <div className='my-3'>
                 {console.log(requested)}
                 {requested.map((e, i) => {
-                    return <DisplayCard e={e} key={i} value={0}/>
+                    return <DisplayCard e={e} key={i} value={1}/>
                 })}
             </div>
         </div>
@@ -68,7 +68,15 @@ function AddProject() {
             {
         (value===2) && (
           <>
-          This is page 2
+          <div className='overflow-auto' style={{height:'90vh'}}>
+            <h1 className='font-semibold' > List of student requested for TAship</h1>
+            <div className='my-3'>
+                {console.log(requested)}
+                {requested.map((e, i) => {
+                    return <DisplayCard e={e} key={i} value={2}/>
+                })}
+            </div>
+        </div>
           </>
         )
       }

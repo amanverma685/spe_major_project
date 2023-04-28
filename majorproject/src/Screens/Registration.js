@@ -12,7 +12,7 @@ function Registration({signOut}) {
   // // console.log(showRegistrationForm)
   // useEffect(() => {
   //   // getUserDetails();
-  // }, [userType]);
+  // }, [userType]);z
 
   // const getUserDetails = async () => {
   //   console.log("get details called")
@@ -67,11 +67,16 @@ function Registration({signOut}) {
   };
 
   const [student, setStudent] = useState({
-    name: "",
+    fname: "",
+    mname: "",
+    lname: "",
     email: "",
-    contact_no: "",
-    gender: "",
+    roll_number:"",
+    contact: "",
     dob: "",
+    current_course:"",
+    // subjects_in_current_sem:"",
+    current_sem:""
   });
 
   const onChange = (e) => {
@@ -116,24 +121,60 @@ function Registration({signOut}) {
       lname: "",
       email: "",
       contact: "",
-      gender: "",
       dob: "",
       qualifictaion: "",
     });
   };
+  const onChangeStudent = (e) => {
+    // console.log(e);
+    setStudent({ ...student, [e.target.name]: e.target.value });
+  };
+
   const submitHandlerStudent = async (e) => {
     e.preventDefault();
-    console.log(professor);
-    setProfessor({
-      name: "",
+    // console.log(student);
+    const submitdata = {
+      fname: student.fname,
+      mname: student.mname,
+      lname: student.lname,
+      email: student.email,
+      dob: student.dob,
+      contact: student.contact,
+      subjects_in_current_sem: selectedSubjects,
+      userType: userType,
+      roll_number:student.roll_number, 
+      current_course:student.current_course,
+      current_sem:student.current_sem
+    };
+    const token = sessionStorage.getItem("token");
+    console.log(submitdata);
+    await axios.post(`https://03wi9io086.execute-api.ap-south-1.amazonaws.com/dev/user_details/update_user`,
+    submitdata
+    ,{
+    headers: {
+      Authorization: "Bearer " + token,
+    }}
+    )
+    .then((res)=>{
+      console.log(res.data)
+      window.location.reload(true)
+    })
+    .catch(err=>console.log(err))
+ 
+    setStudent({
+      fname: "",
+      mname: "",
+      lname: "",
       email: "",
-      contact_no: "",
-      gender: "",
+      roll_number:"",
+      contact: "",
       dob: "",
-      subject: "",
-      qualifictaion: "",
+      current_course:"",
+      subjects_in_current_sem:"",
+      current_sem:""
     });
   };
+
 
   const registerUser = () => {
     if (userType === "professor") setUserType("student");
@@ -142,8 +183,8 @@ function Registration({signOut}) {
 
   return (
     <>
-    <button  className="" onClick={signOut}>
-      Signout
+    <button  className="bg-black text-white h-8 w-36 right-0" onClick={signOut}>
+      Signout 
     </button>
           {userType === "professor" ? (
             <div>
@@ -279,20 +320,45 @@ function Registration({signOut}) {
                 </div>
                 
                 <div className="content">
-                  <form className="Form " onSubmit={submitHandlerStudent}>
+                <form className="Form " onSubmit={submitHandlerStudent}>
                     <div className="user-details">
                       <div className="input-box">
-                        <span className="details">Full Name</span>
+                        <span className="details">First Name</span>
                         <input
                           type="text"
-                          placeholder="Enter your full name"
-                          id="name"
-                          name="name"
+                          placeholder="Enter your first name"
+                          id="fname"
+                          name="fname"
                           required
-                          value={professor.name}
-                          onChange={onChange}
+                          value={student.fname}
+                          onChange={onChangeStudent}
                         />
                       </div>
+                      <div className="input-box">
+                        <span className="details">Middle Name</span>
+                        <input
+                          type="text"
+                          placeholder="Enter your Middle name"
+                          id="mname"
+                          name="mname"
+                          required
+                          value={student.mname}
+                          onChange={onChangeStudent}
+                        />
+                      </div>
+                      <div className="input-box">
+                        <span className="details">Last Name</span>
+                        <input
+                          type="text"
+                          placeholder="Enter your Middle name"
+                          id="lname"
+                          name="lname"
+                          required
+                          value={student.lname}
+                          onChange={onChangeStudent}
+                        />
+                      </div>
+
                       <div className="input-box">
                         <span className="details">Email</span>
                         <input
@@ -301,8 +367,8 @@ function Registration({signOut}) {
                           id="email"
                           name="email"
                           required
-                          value={professor.email}
-                          onChange={onChange}
+                          value={student.email}
+                          onChange={onChangeStudent}
                         />
                       </div>
                       <div className="input-box">
@@ -310,23 +376,11 @@ function Registration({signOut}) {
                         <input
                           type="text"
                           placeholder="Enter your number"
-                          id="contact_no"
-                          name="contact_no"
+                          id="contact"
+                          name="contact"
                           required
-                          value={professor.contact_no}
-                          onChange={onChange}
-                        />
-                      </div>
-                      <div className="input-box">
-                        <span className="details">Gender</span>
-                        <input
-                          type="text"
-                          placeholder="Enter your gender"
-                          id="gender"
-                          name="gender"
-                          required
-                          value={professor.gender}
-                          onChange={onChange}
+                          value={student.contact}
+                          onChange={onChangeStudent}
                         />
                       </div>
                       <div className="input-box">
@@ -337,34 +391,56 @@ function Registration({signOut}) {
                           id="dob"
                           name="dob"
                           required
-                          value={professor.dob}
-                          onChange={onChange}
+                          value={student.dob}
+                          onChange={onChangeStudent}
                         />
                       </div>
                       <div className="input-box">
-                        <span className="details">Subject</span>
-                        <input
-                          type="text"
-                          placeholder="Enter your subject"
-                          id="subject"
-                          name="subject"
-                          required
-                          value={professor.subject}
-                          onChange={onChange}
-                        />
-                      </div>
-                      <div className="input-box">
-                        <span className="details">Qualification</span>
+                        <span className="details">Roll Number</span>
                         <input
                           type="text"
                           placeholder="Enter your full name"
-                          id="qualifictaion"
-                          name="qualifictaion"
+                          id="roll_number"
+                          name="roll_number"
                           required
-                          value={professor.qualifictaion}
-                          onChange={onChange}
+                          value={student.roll_number}
+                          onChange={onChangeStudent}
                         />
                       </div>
+                      <div className="input-box">
+                        <span className="details">Current Program</span>
+                        <input
+                          type="text"
+                          placeholder="Enter your full name"
+                          id="current_course"
+                          name="current_course"
+                          required
+                          value={student.current_course}
+                          onChange={onChangeStudent}
+                        />
+                      </div>
+                      <div className="input-box">
+                        <span className="details">Current semester</span>
+                        <input
+                          type="text"
+                          placeholder="Enter your full name"
+                          id="current_sem"
+                          name="current_sem"
+                          required
+                          value={student.current_sem}
+                          onChange={onChangeStudent}
+                        />
+                      </div>
+                      <div className="m-4">
+                        <Select
+                          isMulti
+                          options={subjects}
+                          value={selectedSubjects}
+                          onChange={handleSelectChange}
+                          placeholder="Courses in current sem<"
+                        />
+                      </div>
+                      <div></div>
                     </div>
                     <div className="button">
                       <input type="submit" value="Register" />

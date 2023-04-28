@@ -21,7 +21,7 @@ function App() {
   }, []);
 
   const getUserDetails = async () => {
-    console.log("get details called")
+    // console.log("get details called")
 
     const token = sessionStorage.getItem("token");
     const user_id = sessionStorage.getItem("user_id");
@@ -40,7 +40,7 @@ function App() {
     await axios
       .request(config)
       .then((response) => {
-        console.log(response.data)
+        // console.log(response.data)
         setShowRegistrationForm(response.data.responseData);
         // console.log(showRegistrationForm);
       })

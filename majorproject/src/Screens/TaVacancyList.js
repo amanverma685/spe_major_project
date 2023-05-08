@@ -1,57 +1,91 @@
-import React, { useState, useEffect } from "react";
-import "./TAData";
-import DisplayTaships from "./DisplayTaships";
-import StudentFormTA from "./StudentFormTA";
+import React,{useState, useEffect} from 'react'
+import axios from "axios"
+import StudentFormTA from '../StudentScreens/StudentFormTA';
+import TARequirements from './TARequirements';
 
-import axios from "axios";
+export default function TaVacancyList() {
+    const [TARequirement, setTArequirement] = useState({
+        subject: "",
+        number_of_vacancy:0,
+        eligibility: "",
+        deadline: "",
+        minimum_grade:0,
+        semester: 0,
+        remarks: "",
+        current_registered: "",
+        status: "",
+      });
 
-export default function () {
-  const [taShip, settaShip] = useState(null);
-  const [iserror, setIsError] = useState("");
-  const token = sessionStorage.getItem("token");
-  const [show, setShow] = useState(false);
+      const [TaVacancyList, setTaVacancyList] = useState([]);
+      const [iserror, setIsError] = useState("");
+      const token = sessionStorage.getItem("token");
+      const [show, setShow] = useState(false);
+    //   const [refresh,setRefresh] = useState(false);
+    
+      useEffect(() => {
+        // get_ta_vacancy_list();
+        (async()=>{
+            try {
+                const res = await axios.get(
+                  "https://2geop6r76a.execute-api.ap-south-1.amazonaws.com/dev/ta_vacancy/get_ta_vacancy_list_by_user_id",
+                  {
+                    headers: {
+                      Authorization: "Bearer " + token,
+                    },
+                  }
+                );
+          
+                const taData = res.data.responseData;
+                console.log("TA vacancy data" ,taData)
+                setTaVacancyList(taData);
+                // setRefresh((pv) => {
+                //     return !pv;
+                // })
+                //  console.log(res.data)
+                console.log("TA vacancy list",TaVacancyList);
 
-  useEffect(() => {
-    getTaship();
-    // async function fetchData() {
-    //   await getTaship();
-    // }
-    // fetchData();
-  }, []);
+              } catch (error) {
+                setIsError(error.message);
+              }
+        })();
+      }, []);
+    // useEffect(() => {
+    //     getTaship();
+    //     // async function fetchData() {
+    //     //   await getTaship();
+    //     // }
+    //     // fetchData();
+    //   }, []);
+    
+    //   const get_ta_vacancy_list = async () => {
+       
+    //         try {
+    //           const res = await axios.get(
+    //             "https://2geop6r76a.execute-api.ap-south-1.amazonaws.com/dev/ta_vacancy/get_ta_vacancy_list",
+    //             {
+    //               headers: {
+    //                 Authorization: "Bearer " + token,
+    //               },
+    //             }
+    //           );
+        
+    //           const taData = res.data.responseData;
+    //           // console.log(taData)
+    //           settaShip(taData);
+    //           //  console.log(res.data)
+    //           console.log(taShip);
+    //         } catch (error) {
+    //           setIsError(error.message);
+    //         }
+          
+        
+    //   };
 
-  const getTaship = async () => {
-    try {
-      const res = await axios.get(
-        "https://2geop6r76a.execute-api.ap-south-1.amazonaws.com/dev/ta_vacancy/get_ta_vacancy_list",
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      );
-
-      const taData = res.data.responseData;
-      // console.log(taData)
-      settaShip(taData);
-      //  console.log(res.data)
-      console.log(taShip);
-    } catch (error) {
-      setIsError(error.message);
+    const submithandler =()=>{
+        console.log(TaVacancyList);
     }
-  };
 
   return (
-    // <div>
-    //      <div className='overflow-auto' style={{height:'90vh'}}>
-    //         <h1 className='font-semibold  text-center m-3'>   TAship requirement</h1>
-    //         <div className='my-3'>
-    //           {/* {console.log(taShip)} */}
-    //             {taShip && taShip.map((e, i) => {
-    //                 return <DisplayTaships e={e} key={i} />
-    //             })}
-    //         </div>
-    //     </div>
-    // </div>
     <div className="overflow-auto" style={{ height: "90vh" }}>
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
@@ -116,8 +150,9 @@ export default function () {
             ></th>
           </tr>
         </thead>
+       
         <tbody className=" divide-y divide-gray-200">
-          {(taShip) && taShip.map((item,index) => (
+          {(TaVacancyList) && TaVacancyList.map((item ,index) => (
             <tr key={index}>
               <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
                 {item.subject}
@@ -147,22 +182,26 @@ export default function () {
                 {item.deadline}
               </td>
               <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
-                {/* <div className="px-4 py-2 m-2"> */}
-                <button
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-semi justify-end rounded-lg w-40 h-10"
-                  onClick={() => setShow(true)}
-                >
-                  Apply
-                </button>
-                {show === true && (
-                  <StudentFormTA onClose={setShow} show={show} />
-                )}
-                {/* </div> */}
+           
+           
+              <button
+                className="bg-blue-500 hover:bg-blue-600 text-white  py-2 px-4 rounded-full "
+                onClick={() => {
+                setShow(true);
+                }}
+                 >
+                Edit
+             </button>
+             {
+                (show===true) && <TARequirements show={show} onClose={setShow} value={1}/>
+
+             }
+               
               </td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
-  );
+  )
 }

@@ -6,6 +6,7 @@ import AddProject from "../Screens/AddProject";
 import Registration from "../Screens/Registration";
 import StudentNotification from "../StudentScreens/StudentNotification";
 import SideNavBar from "./SideNavBar";
+import TaVacancyList from "../Screens/TaVacancyList";
 
 
 const MainComponent = ({signout}) => {
@@ -19,11 +20,12 @@ const MainComponent = ({signout}) => {
         <div className="flex-1">
           <Routes>
             <Route exact path="/" element={<Home />} />
-            <Route path="/Home" element={<Home />} />
-            <Route path="/ViewProject" element={<ViewProject />} />
-            <Route path="/AddProject" element={<AddProject />} />
-            <Route path="/Registration" element={<Registration />} />
-            <Route path="/TAForm" element={<StudentNotification />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/viewproject" element={<ViewProject />} />
+            <Route path="/addproject" element={<AddProject />} />
+            <Route path="/registration" element={<Registration />} />
+            <Route path="/taform" element={<StudentNotification />} />
+            <Route path="/tavacancylist" element={<TaVacancyList />} />
           </Routes>
         </div>
       </div>

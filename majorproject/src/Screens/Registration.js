@@ -124,6 +124,7 @@ function Registration({signOut}) {
       dob: "",
       qualifictaion: "",
     });
+
   };
   const onChangeStudent = (e) => {
     // console.log(e);
@@ -173,6 +174,7 @@ function Registration({signOut}) {
       subjects_in_current_sem:"",
       current_sem:""
     });
+   
   };
 
 

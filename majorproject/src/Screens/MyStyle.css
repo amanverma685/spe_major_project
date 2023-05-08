@@ -16,7 +16,8 @@
 }
 body{
   height: 100vh;
-  background: linear-gradient(135deg, #71b7e6, #5168c5);
+  /* background: linear-gradient(135deg, #71b7e6, #5168c5); */
+  background-color: #71b7e6;
 }
 .container{
   /* max-width: 1000px;

@@ -5,10 +5,10 @@ export default function (props) {
 
   const [TARequirement, setTArequirement] = useState({
     subject: "",
-    number_of_vacancy: "",
+    number_of_vacancy:"",
     eligibility: "",
     deadline: "",
-    minimum_grade: "",
+    minimum_grade:"",
     semester: "",
     remarks: "",
     current_registered: "",
@@ -22,11 +22,13 @@ export default function (props) {
 
   const handleSubmit = async () => {
     console.log(TARequirement);
+   
 
     const token = sessionStorage.getItem("token");
+    // console.log(token);
     await axios
       .post(
-        `https://wche6pxyti.execute-api.ap-south-1.amazonaws.com/dev/ta_vacancy/post_form_details`,
+        `https://2geop6r76a.execute-api.ap-south-1.amazonaws.com/dev/ta_vacancy/post_form_details`,
         TARequirement,
         {
           headers: {
@@ -43,6 +45,7 @@ export default function (props) {
   };
   return (
     <div className="fixed z-20 inset-0 overflow-y-auto">
+      {/* {console.log(props.value)} */}
       <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
         <div className="fixed inset-0 transition-opacity">
           <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
@@ -80,7 +83,7 @@ export default function (props) {
                 <input
                   className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="number_of_vacancy"
-                  type="number_of_vacancy"
+                  type="number"
                   placeholder="Number of TA required"
                   name="number_of_vacancy"
                   value={TARequirement.number_of_vacancy}
@@ -131,7 +134,7 @@ export default function (props) {
                 <input
                   className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="minimum_grade"
-                  type="minimum_grade"
+                  type="float"
                   placeholder="Enter your grade"
                   name="minimum_grade"
                   value={TARequirement.minimum_grade}
@@ -172,7 +175,7 @@ export default function (props) {
                   onChange={onChange}
                 />
               </div>
-              <div className="mb-1">
+              {/* <div className="mb-1">
                 <label
                   className="block text-gray-700 mb-1 text-sm"
                   htmlFor="username"
@@ -188,7 +191,7 @@ export default function (props) {
                   value={TARequirement.current_registered}
                   onChange={onChange}
                 />
-              </div>
+              </div> */}
               <div className="mb-1">
                 <label
                   className="block text-gray-700 mb-1 text-sm"

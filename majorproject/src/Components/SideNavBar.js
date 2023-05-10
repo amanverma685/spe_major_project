@@ -13,13 +13,17 @@ import AddIcon from "@mui/icons-material/Add";
 import InsightsIcon from "@mui/icons-material/Insights";
 import { Button } from "@mui/material";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import axios from "axios"
+import axios from "axios";
+import { CircularProgress } from "@mui/material";
+
 
 function SideNavBar(props) {
   
  
   const [iserror, setIsError] = useState("")
- 
+  const [isLoading,setIsLoading]= useState(true)
+
+
   var userType="";
 
   useEffect(() => {
@@ -29,6 +33,7 @@ function SideNavBar(props) {
   const token = sessionStorage.getItem("token");
   const getUserDetails = async ()=>{
     try {
+      setIsLoading(true);
           const res = await axios.get(
            `https://03wi9io086.execute-api.ap-south-1.amazonaws.com/dev/user_details/get_user`,
             {
@@ -41,9 +46,14 @@ function SideNavBar(props) {
           const taData = res.data.responseData;
           // console.log("taData" ,taData)
           userType=taData.user_type
-          console.log(userType)
+
+          console.log(userType);
+          setIsLoading(false);
+
         } catch (error) {
           setIsError(error.message);
+          setIsLoading(false);
+
         }
 
   }
@@ -53,6 +63,8 @@ function SideNavBar(props) {
   return (
    <>
    {
+    (isLoading===false)?(<>
+    {
     (userType==="professor") ?
     (<div style={{ display: "flex", height: "100%" }}>
       <Sidebar
@@ -68,6 +80,7 @@ function SideNavBar(props) {
         >
           <MenuIcon />
         </button>
+        <div>Professor Logged</div>
 
         <Menu className="menu-of-sidebar">
           <MenuItem component={<Link to={"/home"} />}>
@@ -81,7 +94,6 @@ function SideNavBar(props) {
             {" "}
             <AddIcon /> TA list
           </MenuItem> */}
-          <div>Professor Logged</div>
           <MenuItem component={<Link to={"/tavacancylist"} />}>
             {" "}
             <PersonAddIcon />
@@ -151,6 +163,20 @@ function SideNavBar(props) {
     
           }
   
-</>);
+</>):(
+  <div
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+          }}
+        ><h1>Please Wait....</h1>
+          <CircularProgress size={60} color="secondary" />
+        </div>
+)
+   }
+   </>
+    );
 }
 export default SideNavBar;

@@ -40,7 +40,7 @@ function SideNavBar(props) {
       );
 
       const taData = res.data.responseData;
-      console.log("userdata", taData);
+      // console.log("userdata", taData);
 
       // console.log("user Type"+userType);
       setUserType(taData?.user_type);

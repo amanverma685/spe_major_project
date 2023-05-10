@@ -12,7 +12,7 @@ export default function (props) {
     semester: "",
     remarks: "",
     current_registered: "",
-    status: "",
+    status:"Active",
   });
 
   const onChange = (e) => {
@@ -141,23 +141,7 @@ export default function (props) {
                   onChange={onChange}
                 />
               </div>
-              <div className="mb-1">
-                <label
-                  className="block text-gray-700 mb-1 text-sm"
-                  htmlFor="username"
-                >
-                  Status:
-                </label>
-                <input
-                  className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="status"
-                  type="text"
-                  placeholder="Active/Inactive"
-                  name="status"
-                  value={TARequirement.status}
-                  onChange={onChange}
-                />
-              </div>
+              
               <div className="mb-1">
                 <label
                   className="block text-gray-700 mb-1 text-sm"
@@ -169,7 +153,7 @@ export default function (props) {
                   className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="semester"
                   type="semester"
-                  placeholder=" Enter your current semester"
+                  placeholder=" Enter semester for TAship"
                   name="semester"
                   value={TARequirement.semester}
                   onChange={onChange}

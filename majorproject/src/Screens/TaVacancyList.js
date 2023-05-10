@@ -2,6 +2,7 @@ import React,{useState, useEffect} from 'react'
 import axios from "axios"
 import StudentFormTA from '../StudentScreens/StudentFormTA';
 import TARequirements from './TARequirements';
+import { CircularProgress } from "@mui/material";
 
 export default function TaVacancyList() {
     const [TARequirement, setTArequirement] = useState({
@@ -16,6 +17,7 @@ export default function TaVacancyList() {
         status: "",
       });
 
+      const [isLoading,setIsLoading]= useState(true)
       const [TaVacancyList, setTaVacancyList] = useState([]);
       const [iserror, setIsError] = useState("");
       const token = sessionStorage.getItem("token");
@@ -26,6 +28,7 @@ export default function TaVacancyList() {
         // get_ta_vacancy_list();
         (async()=>{
             try {
+              setIsLoading(true);
                 const res = await axios.get(
                   "https://2geop6r76a.execute-api.ap-south-1.amazonaws.com/dev/ta_vacancy/get_ta_vacancy_list_by_user_id",
                   {
@@ -36,15 +39,22 @@ export default function TaVacancyList() {
                 );
           
                 const taData = res.data.responseData;
+                
+
                 console.log("TA vacancy data" ,taData)
+
                 setTaVacancyList(taData);
+
                 // setRefresh((pv) => {
                 //     return !pv;
                 // })
                 //  console.log(res.data)
                 console.log("TA vacancy list",TaVacancyList);
+                setIsLoading(false);
+
 
               } catch (error) {
+                setIsLoading(false);
                 setIsError(error.message);
               }
         })();
@@ -151,7 +161,9 @@ export default function TaVacancyList() {
           </tr>
         </thead>
        
-        <tbody className=" divide-y divide-gray-200">
+        <>
+        {
+          (isLoading===false)?(<tbody className=" divide-y divide-gray-200">
           {(TaVacancyList) && TaVacancyList.map((item ,index) => (
             <tr key={index}>
               <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
@@ -160,16 +172,16 @@ export default function TaVacancyList() {
               <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
                 {item.number_of_vacancy}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
+              <td className="px-6 py-4 whitespace-wrap  bg-white bg-opacity-25">
                 {item.eligibility}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
+              <td className="px-6 py-4 whitespace-wrap  bg-white bg-opacity-25">
                 {item.minimum_grade}
               </td>
               <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
                 {item.semester}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
+              <td className="px-6 py-4 whitespace-wrap  bg-white bg-opacity-25">
                 {item.remarks}
               </td>
               <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
@@ -179,7 +191,7 @@ export default function TaVacancyList() {
                 {item.status}
               </td>
               <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
-                {item.deadline}
+                {new Date(item.deadline).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' }).replace(/(\d+)(st|nd|rd|th)/, "$1")}
               </td>
               <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
            
@@ -200,7 +212,20 @@ export default function TaVacancyList() {
               </td>
             </tr>
           ))}
-        </tbody>
+        </tbody>):(
+        <tbody><div
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+          }}
+        ><h1>Please Wait....</h1>
+          <CircularProgress size={60} color="secondary" />
+        </div>
+        </tbody>)
+        }
+        </>
       </table>
     </div>
   )

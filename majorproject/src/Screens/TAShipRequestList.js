@@ -2,7 +2,7 @@ import React ,{useState,useEffect} from 'react'
 import SampleData from '../SampleData'
 import DisplayCard from './DisplayCard';
 
-function AddProject() {
+function TAShipRequestList() {
   const [value, setvalue] = useState(0)
 
   const [requested, setRequested] = useState([]);
@@ -87,4 +87,4 @@ function AddProject() {
   )
 }
 
-export default AddProject
+export default TAShipRequestList

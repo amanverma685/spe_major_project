@@ -195,7 +195,7 @@ function Registration({signOut}) {
                   <div className="title"> Professor Registration</div>
                   <div className="button_gradient">
                     <button
-                      className="m-3 h-1 w-40 text-center"
+                      className="m-3 h-10 w-40 text-center"
                       onClick={registerUser}
                     >
                       Register As Student

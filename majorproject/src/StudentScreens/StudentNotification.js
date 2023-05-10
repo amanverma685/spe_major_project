@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./TAData";
 import DisplayTaships from "./DisplayTaships";
 import StudentFormTA from "./StudentFormTA";
+import { CircularProgress } from "@mui/material";
 
 import axios from "axios";
 
@@ -10,9 +11,14 @@ export default function () {
   const [iserror, setIsError] = useState("");
   const token = sessionStorage.getItem("token");
   const [show, setShow] = useState(false);
+  const [isLoading,setIsLoading]= useState(true)
+
 
   useEffect(() => {
+
     getTaship();
+
+
     // async function fetchData() {
     //   await getTaship();
     // }
@@ -21,6 +27,8 @@ export default function () {
 
   const getTaship = async () => {
     try {
+      setIsLoading(true);
+
       const res = await axios.get(
         "https://2geop6r76a.execute-api.ap-south-1.amazonaws.com/dev/ta_vacancy/get_ta_vacancy_list",
         {
@@ -35,7 +43,11 @@ export default function () {
       settaShip(taData);
       //  console.log(res.data)
       console.log(taShip);
+      setIsLoading(false);
+
     } catch (error) {
+      setIsLoading(false);
+
       setIsError(error.message);
     }
   };
@@ -116,7 +128,11 @@ export default function () {
             ></th>
           </tr>
         </thead>
-        <tbody className=" divide-y divide-gray-200">
+        
+        <>
+        {
+        (isLoading===false)?(
+          <tbody className=" divide-y divide-gray-200">
           {(taShip) && taShip.map((item,index) => (
             <tr key={index}>
               <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
@@ -162,6 +178,21 @@ export default function () {
             </tr>
           ))}
         </tbody>
+        ):(
+          <tbody>
+            <div
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+          }}
+        ><h1>Please Wait....</h1>
+          <CircularProgress size={60} color="secondary" />
+        </div>
+          </tbody>
+        )
+}</>
       </table>
     </div>
   );

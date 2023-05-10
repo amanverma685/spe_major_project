@@ -125,7 +125,7 @@ function SideNavBar(props) {
             {/* <MenuItem component={<Link to={"/viewProject"} />}>
               <InsightsIcon /> Projects
             </MenuItem> */}
-            <MenuItem component={<Link to={"/addProject"} />}>
+            <MenuItem component={<Link to={"/tarequest"} />}>
               {" "}
               <AddIcon /> TA list
             </MenuItem>

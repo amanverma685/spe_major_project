@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "../Screens/Home";
 import ViewProject from "../Screens/ViewProject";
-import AddProject from "../Screens/AddProject";
+import TAShipRequestList from "../Screens/TAShipRequestList";
 import Registration from "../Screens/Registration";
 import StudentNotification from "../StudentScreens/StudentNotification";
 import SideNavBar from "./SideNavBar";
@@ -22,7 +22,7 @@ const MainComponent = ({signout}) => {
             <Route exact path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/viewproject" element={<ViewProject />} />
-            <Route path="/addproject" element={<AddProject />} />
+            <Route path="/tarequest" element={<TAShipRequestList />} />
             <Route path="/registration" element={<Registration />} />
             <Route path="/taform" element={<StudentNotification />} />
             <Route path="/tavacancylist" element={<TaVacancyList />} />

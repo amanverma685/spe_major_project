@@ -141,7 +141,7 @@ export default function () {
               <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
                 {item.number_of_vacancy}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
+              <td className="px-6 py-4 whitespace-wrap  bg-white bg-opacity-25">
                 {item.eligibility}
               </td>
               <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
@@ -150,7 +150,7 @@ export default function () {
               <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
                 {item.semester}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
+              <td className="px-6 py-4 whitespace-wrap  bg-white bg-opacity-25">
                 {item.remarks}
               </td>
               <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
@@ -160,7 +160,7 @@ export default function () {
                 {item.status}
               </td>
               <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
-                {item.deadline}
+              {new Date(item.deadline).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' }).replace(/(\d+)(st|nd|rd|th)/, "$1")}
               </td>
               <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
                 {/* <div className="px-4 py-2 m-2"> */}
@@ -171,7 +171,7 @@ export default function () {
                   Apply
                 </button>
                 {show === true && (
-                  <StudentFormTA onClose={setShow} show={show} />
+                  <StudentFormTA onClose={setShow} data={item} show={show} />
                 )}
                 {/* </div> */}
               </td>

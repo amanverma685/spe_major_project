@@ -1,20 +1,41 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
+import axios from "axios";
 
 export default function StudentFormTA(props) {
-    const{onClose,show}={...props}
+  
+    const{onClose,show,data}={...props}
     const[student,setStudent]=useState({
-        id:"",
-        name:"",
-        email:"",
+        roll_number:"",
         grade:"",
-        achievements:"",
         whyApply:"",
+        experience:"",
+        user_id:data.user_id,
+        subject:data.subject,
+        ta_vacancy_id:data.ta_vac_id
     })
+    
+    
     const onChange=(e)=>{
         setStudent({...student, [e.target.name]: e.target.value });
     }
-    const handleSubmit =(e)=>{
+    
+    const handleSubmit =async(e)=>{
       console.log(student);
+      const token = sessionStorage.getItem("token");
+      await axios.post(`https://qq83tpt61e.execute-api.ap-south-1.amazonaws.com/dev/ta_request/post_ta_request_details`,
+      student
+      ,{
+      headers: {
+        Authorization: "Bearer " + token,
+      }}
+      )
+      .then((res)=>{
+        console.log(res.data)
+        window.location.reload(true)
+      })
+      .catch(err=>console.log(err))
+
+
       console.log("form submitted");
     }
   return (
@@ -30,49 +51,36 @@ export default function StudentFormTA(props) {
             TA Form
           </h4>
           <form >
-            <div className='grid gap-4 grid-cols-2'>
+            <div className='grid gap-6 grid-cols-2'>
           <div className="mb-1">
             <label className="block text-gray-700 mb-1 text-sm" htmlFor="username">
               Roll Number:
             </label>
             <input
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="id"
-              type="number"
+              id="roll_number"
+              type="text"
               placeholder="Enter your roll number"
-              name="id"
-              value={student.id}
+              name="roll_number"
+              value={student.roll_number}
               onChange={onChange}
             />
           </div>
           <div className="mb-1">
             <label className="block text-gray-700 mb-1 text-sm" htmlFor="username">
-              Name:
+              Subject Name:
             </label>
             <input
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="name"
-              type="name"
-              placeholder="Enter your name"
-              name="name"
-              value={student.name}
-              onChange={onChange}
+              id="subject"
+              type="subject"
+              placeholder="Enter your subject"
+              name="subject"
+              value={student.subject}
+              readOnly={true}
             />
           </div>
-          <div className="mb-1">
-            <label className="block text-gray-700 mb-1 text-sm" htmlFor="username">
-             Email:
-            </label>
-            <input
-              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="email"
-              type="email"
-              placeholder=" Enter your email"
-              name="email"
-              value={student.email}
-              onChange={onChange}
-            />
-          </div>
+          
           <div className="mb-1">
             <label className="block text-gray-700 mb-1 text-sm" htmlFor="username">
             Grade:
@@ -89,15 +97,15 @@ export default function StudentFormTA(props) {
           </div>
           <div className="mb-1">
             <label className="block text-gray-700 mb-1 text-sm" htmlFor="username">
-            Achievements
+            Experience
             </label>
             <input
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="achievements"
+              id="experience"
               type="text"
-              placeholder="Enter your achievements"
-              name="achievements"
-              value={student.achievements}
+              placeholder="Enter your experience"
+              name="experience"
+              value={student.experience}
               onChange={onChange}
             />
           </div> 
@@ -111,7 +119,6 @@ export default function StudentFormTA(props) {
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="whyApply"
               type="text"
-           
               name="whyApply"
               value={student.whyApply}
               onChange={onChange}

@@ -78,7 +78,7 @@ function Home() {
           <AddIcon /> TA requirements
         </button>
         {
-          (show===true) && <TARequirements show={show} onClose={setShow} />
+          (show===true) && <TARequirements show={show} onClose={setShow} value={0}/>
 
         }
       </div>

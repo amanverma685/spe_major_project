@@ -22,6 +22,7 @@ export default function TaVacancyList() {
       const [iserror, setIsError] = useState("");
       const token = sessionStorage.getItem("token");
       const [show, setShow] = useState(false);
+      const[modalData,setModalData]=useState({})
     //   const [refresh,setRefresh] = useState(false);
     
       useEffect(() => {
@@ -41,15 +42,10 @@ export default function TaVacancyList() {
                 const taData = res.data.responseData;
                 
 
-                console.log("TA vacancy data" ,taData)
+                // console.log("TA vacancy data" ,taData)
 
                 setTaVacancyList(taData);
-
-                // setRefresh((pv) => {
-                //     return !pv;
-                // })
-                //  console.log(res.data)
-                console.log("TA vacancy list",TaVacancyList);
+                // console.log("TA vacancy list",TaVacancyList);
                 setIsLoading(false);
 
 
@@ -59,44 +55,21 @@ export default function TaVacancyList() {
               }
         })();
       }, []);
-    // useEffect(() => {
-    //     getTaship();
-    //     // async function fetchData() {
-    //     //   await getTaship();
-    //     // }
-    //     // fetchData();
-    //   }, []);
-    
-    //   const get_ta_vacancy_list = async () => {
-       
-    //         try {
-    //           const res = await axios.get(
-    //             "https://2geop6r76a.execute-api.ap-south-1.amazonaws.com/dev/ta_vacancy/get_ta_vacancy_list",
-    //             {
-    //               headers: {
-    //                 Authorization: "Bearer " + token,
-    //               },
-    //             }
-    //           );
-        
-    //           const taData = res.data.responseData;
-    //           // console.log(taData)
-    //           settaShip(taData);
-    //           //  console.log(res.data)
-    //           console.log(taShip);
-    //         } catch (error) {
-    //           setIsError(error.message);
-    //         }
-          
-        
-    //   };
-
+   
     const submithandler =()=>{
         console.log(TaVacancyList);
     }
 
   return (
+
     <div className="overflow-auto" style={{ height: "90vh" }}>
+      {
+                (show===true) && 
+                <div>
+                <TARequirements show={show} onClose={setShow} value={1} data={modalData}/>
+                </div>
+
+             }
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
           <tr>
@@ -200,14 +173,12 @@ export default function TaVacancyList() {
                 className="bg-blue-500 hover:bg-blue-600 text-white  py-2 px-4 rounded-full "
                 onClick={() => {
                 setShow(true);
+                setModalData(item)
                 }}
                  >
                 Edit
              </button>
-             {
-                (show===true) && <TARequirements show={show} onClose={setShow} value={1}/>
-
-             }
+             
                
               </td>
             </tr>

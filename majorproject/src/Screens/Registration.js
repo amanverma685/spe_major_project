@@ -188,7 +188,7 @@ function Registration({signOut}) {
     <button  className="bg-black text-white h-8 w-36 right-0" onClick={signOut}>
       Signout 
     </button>
-          {userType === "professor" ? (
+          {userType=== "professor" ? (
             <div>
               <div className="container">
                 <div className="flex flex-row justify-between">

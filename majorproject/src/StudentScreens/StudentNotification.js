@@ -42,7 +42,7 @@ export default function () {
       // console.log(taData)
       settaShip(taData);
       //  console.log(res.data)
-      console.log(taShip);
+      // console.log(taShip);
       setIsLoading(false);
 
     } catch (error) {
@@ -133,7 +133,7 @@ export default function () {
         {
         (isLoading===false)?(
           <tbody className=" divide-y divide-gray-200">
-          {(taShip) && taShip.map((item,index) => (
+          {taShip && taShip.map((item,index) => (
             <tr key={index}>
               <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
                 {item.subject}
@@ -170,8 +170,12 @@ export default function () {
                 >
                   Apply
                 </button>
+                {/* {console.log("TAship",item)} */}
+                {/* {console.log("TAship",item)}
+                <StudentFormTA onClose={setShow} data={item} show={show} /> */}
                 {show === true && (
-                  <StudentFormTA onClose={setShow} data={item} show={show} />
+                  
+                  <StudentFormTA onClose={setShow} data={item} show={show}  key={index}/>
                 )}
                 {/* </div> */}
               </td>

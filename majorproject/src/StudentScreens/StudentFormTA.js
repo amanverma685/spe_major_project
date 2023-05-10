@@ -4,6 +4,7 @@ import axios from "axios";
 export default function StudentFormTA(props) {
   
     const{onClose,show,data}={...props}
+    console.log("data",data)
     const[student,setStudent]=useState({
         roll_number:"",
         grade:"",
@@ -74,7 +75,7 @@ export default function StudentFormTA(props) {
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="subject"
               type="subject"
-              placeholder="Enter your subject"
+              // placeholder="Enter your subject"
               name="subject"
               value={student.subject}
               readOnly={true}

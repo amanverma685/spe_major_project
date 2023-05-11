@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios"
+import Swal from 'sweetalert2';
+
 export default function (props) {
   const { onClose, show ,value,data} = { ...props };
   console.log("value",value)
@@ -45,7 +47,22 @@ export default function (props) {
         // window.location.reload(true);
       })
       .catch((err) => console.log(err));
+      return Swal.fire({
+        title: 'Success!',
+        text: 'TA Vacancy has been added successfully.',
+        icon: 'success',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK'
+      
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Handle confirm button click
+          onClose(false)
+          
+        } 
+        });
   };
+
 
   const handleSubmitEdit = async () => {
     console.log(editTARequirement);
@@ -66,9 +83,25 @@ export default function (props) {
       .then((res) => {
         console.log(res.data);
         console.log("TA requirement added successfull")
-        // window.location.reload(true);
+
       })
       .catch((err) => console.log(err));
+      
+      return Swal.fire({
+        title: 'Success!',
+        text: 'TA Vacancy has been added successfully.',
+        icon: 'success',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK'
+      
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Handle confirm button click
+          onClose(false)
+          
+        } 
+        });
+
   };
   return (
     <>

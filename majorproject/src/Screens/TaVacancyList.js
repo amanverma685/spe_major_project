@@ -3,6 +3,7 @@ import axios from "axios"
 import StudentFormTA from '../StudentScreens/StudentFormTA';
 import TARequirements from './TARequirements';
 import { CircularProgress } from "@mui/material";
+import Swal from 'sweetalert2';
 
 export default function TaVacancyList() {
     const [TARequirement, setTArequirement] = useState({
@@ -59,6 +60,44 @@ export default function TaVacancyList() {
     const submithandler =()=>{
         console.log(TaVacancyList);
     }
+
+ const deleteTAVacancy=async(ta_vac_id)=> {
+    console.log(ta_vac_id)
+    try {
+      const res = await axios.get(
+        "https://2geop6r76a.execute-api.ap-south-1.amazonaws.com/dev/ta_vacancy/delete_ta_vacancy/"+ta_vac_id,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+      
+      return Swal.fire({
+        title: 'Success!',
+        text: 'TA Vacancy has been deleted successfully.',
+        icon: 'success',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK'
+      }).then((result) => {
+        window.location.reload(true);
+       });
+    }
+     catch (error) {
+      
+      return Swal.fire({
+        title: 'Success Failed!',
+        text: error,
+        icon: 'warning',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK'
+        
+      }).then((result) => {
+       window.location.reload(true);
+      });
+    }    
+ }
+
 
   return (
 
@@ -177,6 +216,15 @@ export default function TaVacancyList() {
                 }}
                  >
                 Edit
+             </button>
+             <button
+                className="bg-blue-500 mx-2 hover:bg-blue-600 text-white  py-2 px-4 rounded-full "
+                onClick={() => {
+                deleteTAVacancy(item.ta_vac_id)
+                
+                }}
+                 >
+                Delete
              </button>
              
                

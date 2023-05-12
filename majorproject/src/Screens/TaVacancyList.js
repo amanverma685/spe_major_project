@@ -43,7 +43,7 @@ export default function TaVacancyList() {
                 const taData = res.data.responseData;
                 
 
-                // console.log("TA vacancy data" ,taData)
+                console.log("TA vacancy data" ,taData)
 
                 setTaVacancyList(taData);
                 // console.log("TA vacancy list",TaVacancyList);
@@ -102,13 +102,15 @@ export default function TaVacancyList() {
   return (
 
     <div className="overflow-auto" style={{ height: "90vh" }}>
-      {
+      { 
+      
                 (show===true) && 
                 <div>
                 <TARequirements show={show} onClose={setShow} value={1} data={modalData}/>
                 </div>
 
              }
+         
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
           <tr>
@@ -176,7 +178,8 @@ export default function TaVacancyList() {
         <>
         {
           (isLoading===false)?(<tbody className=" divide-y divide-gray-200">
-          {(TaVacancyList) && TaVacancyList.map((item ,index) => (
+          {
+          (TaVacancyList) && TaVacancyList.map((item ,index) => (
             <tr key={index}>
               <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
                 {item.subject}

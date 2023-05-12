@@ -10,8 +10,9 @@ function TAShipRequestList() {
   const [requested, setRequested] = useState([]);
 
   useEffect(() => {
-    setRequested(SampleData)
-    // getListOfStudentRequestedForTA()
+    // setRequested(SampleData)
+    // console.log("Sample Data",SampleData)
+    getListOfStudentRequestedForTA()
   }, []);
 
   const getListOfStudentRequestedForTA = async () => {
@@ -29,8 +30,9 @@ function TAShipRequestList() {
         }
       )
       .then((res) => {
-        console.log(res.data);
-        setRequested(res.data)
+        // console.log("TA applied list",res.data);
+        // console.log(res.data.responseData)
+        setRequested(res.data.responseData)
       })
       .catch((err) => console.log(err));
     
@@ -67,8 +69,8 @@ function TAShipRequestList() {
           <div className='overflow-auto' style={{height:'90vh'}}>
             <h1 className='font-semibold text-center m-3' > List of student requested for TAship</h1>
             <div className='my-3'>
-                {console.log(requested)}
-                {requested.map((e, i) => {
+                {/* {console.log("Requestedlist",requested)} */}
+                {requested?.map((e, i) => {
                     return <DisplayCard e={e} key={i} value={0} />
                 })}
             </div>
@@ -83,9 +85,9 @@ function TAShipRequestList() {
             <h1 className='font-semibold' > List of student requested for TAship</h1>
             <div className='my-3'>
                 {console.log(requested)}
-                {requested.map((e, i) => {
+                {/* {requested.map((e, i) => {
                     return <DisplayCard e={e} key={i} value={1}/>
-                })}
+                })} */}
             </div>
         </div>
           </>
@@ -98,9 +100,9 @@ function TAShipRequestList() {
             <h1 className='font-semibold' > List of student requested for TAship</h1>
             <div className='my-3'>
                 {console.log(requested)}
-                {requested.map((e, i) => {
+                {/* {requested?.map((e, i) => {
                     return <DisplayCard e={e} key={i} value={2}/>
-                })}
+                })} */}
             </div>
         </div>
           </>

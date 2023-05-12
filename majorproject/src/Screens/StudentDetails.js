@@ -3,10 +3,13 @@ import React, { useState } from "react";
 export default function StudentDetails(props) {
   const { onClose, show, id, name, value } = { ...props };
   const [isDisabled, setIsDisabled] = useState(true);
-  console.log(value)
+  const[status,setStatus]=useState(true);
+  console.log("Status before accepting",props.data)
 
   const handleaccept = () => {
-    console.log("accepted");
+    setStatus(false);
+    props.data.request_status="accepted"
+    console.log("Status after accepting",props.data)
   };
   const handlereject = () => {
     console.log("rejected");
@@ -24,23 +27,40 @@ export default function StudentDetails(props) {
         </div>
         <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
           <div className="p-6">
-            <h4 className="text-2xl font-bold mb-4 text-black   ">
+            <h4 className="text-2xl justify-center font-bold mb-4 text-black   ">
               Student Details
             </h4>
-            <div>
-              <div className="text-gray-900">Roll Number: {props.id}</div>
-              {/* <div className="font-bold text-black">{props.id}</div> */}
-              <div className="text-gray-900">Name: {props.name}</div>
-              {/* <div className="font-bold text-black">{props.name}</div> */}
-              <div className="text-gray-900">Email: {props.email}</div>
-              {/* <div className="font-bold text-black">{props.email}</div> */}
-              <div className="text-gray-900">Grade: {props.grade}</div>
-              {/* <div className="font-bold text-black">{props.grade}</div> */}
-              <div className="text-gray-900">
-                Achievement: {props.achievements}
-              </div>
-              {/* <div className="font-bold text-black">{props. achievements}</div> */}
-            </div>
+            <div className="px-4 py-2 m-2 flex-1">
+          <div className="text-sm ">Roll Number: {props.data.roll_number}</div>
+        </div>
+        <div className="px-4 py-1 m-1 flex-2">
+          <div className="text-sm">
+            Name: {props.data.fname + " " + props.data.mname + " " + props.data.lname}
+          </div>
+        </div>
+        <div className="px-4 py-1 m-1 flex-1">
+          <div className="text-sm">Grade: {props.data.previous_grade}</div>
+        </div>
+        <div className="px-4 py-1 m-1 flex-1">
+          <div className="text-sm">Email: {props.data.email}</div>
+        </div>
+        <div className="px-4 py-1 m-1 flex-1">
+          <div className="text-sm">Subject: {props.data.subject_name}</div>
+        </div>
+     
+        <div className="px-4 py-1 m-1 flex-1">
+          <div className="text-sm">Course: {props.data.current_course}</div>
+        </div>
+        <div className="px-4 py-1 m-1 flex-1">
+          <div className="text-sm">Semester: {props.data.current_sem}</div>
+        </div>
+        <div className="px-4 py-1 m-1 flex-1">
+          <div className="text-sm">Experience: {props.data.experience}</div>
+        </div>
+        <div className="px-4 py-1 m-1 flex-1">
+          <div className="text-sm">Why applied for the TAship: {props.data.why_applied}</div>
+        </div>
+           
             <div className="flex flex-row">
               <div>
                 <button
@@ -52,7 +72,7 @@ export default function StudentDetails(props) {
                 >
                   Close
                 </button>
-                {(value === 0  ||  value==2) && (
+                {(value === 0  ||  value==2) && status && (
                   <button
                     className="bg-black text-center m-2 text-white py-1 px-4 rounded-md focus:outline-none focus:ring focus:border-blue-500"
                     onClick={handleaccept}

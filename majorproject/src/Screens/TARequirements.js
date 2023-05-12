@@ -8,14 +8,14 @@ export default function (props) {
   console.log("data",data)
 
   const [TARequirement, setTArequirement] = useState({
-    subject: "",
+    subject:"",
     number_of_vacancy:"",
     eligibility: "",
     deadline: "",
     minimum_grade:"",
     semester: "",
     remarks: "",
-    current_registered: "",
+    current_registered:"",
     status:"Active",
   });
   const [editTARequirement, setEditTArequirement] = useState(data);
@@ -221,23 +221,7 @@ export default function (props) {
                   onChange={onChange}
                 />
               </div>
-              {/* <div className="mb-1">
-                <label
-                  className="block text-gray-700 mb-1 text-sm"
-                  htmlFor="username"
-                >
-                  Current registered:
-                </label>
-                <input
-                  className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="current_registered"
-                  type="current_registered"
-                  placeholder=" Enter current registered"
-                  name="current_registered"
-                  value={TARequirement.current_registered}
-                  onChange={onChange}
-                />
-              </div> */}
+              
               <div className="mb-1">
                 <label
                   className="block text-gray-700 mb-1 text-sm"

@@ -12,6 +12,7 @@ export default function StudentFormTA(props) {
     user_id: data?.user_id,
     subject: data?.subject,
     ta_vacancy_id: data?.ta_vac_id,
+    professor_id: data?.professor_id
   });
 
   const onChange = (e) => {

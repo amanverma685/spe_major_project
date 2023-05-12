@@ -5,11 +5,9 @@ import AddIcon from "@mui/icons-material/Add";
 import TARequirements from "./TARequirements";
 import axios from 'axios'
 
-function Home() {
-
+function Home(props) {
   const [show, setShow] = useState(false);
-
-
+  const [userData,setUserData]=useState(props.data);
 
   const data = {
     labels: ["Jan", "Feb", "Mar", "Apr", "May"],
@@ -31,8 +29,10 @@ function Home() {
     },
   };
   return (
-      <div className="container">
-       
+      <div className="container h-90% w-90% ">
+        <div className="flex-row ml-3 mb-3">
+          <text className="font-bold text-3xl ">Welcome Back, <text className="font-bold text-2xl text-gray-700" >{userData.fname}</text></text>
+        </div>
       <div className="grid grid-cols-3 gap-4">
         <div className="max-w-md mx-auto bg-pink-200 rounded-xl shadow-md overflow-hidden ">
           <div className="p-8">
@@ -65,10 +65,10 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="h-80 w-100 mt-4">
+      <div className=" mt-4 mb-11">
         <Line data={data} options={options} />
       </div>
-      <div className="fixed bottom-5 right-5">
+      <div className="absolute bottom-3 right-3">
         <button
           className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full "
           onClick={() => {

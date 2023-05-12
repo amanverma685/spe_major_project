@@ -12,6 +12,7 @@ const MainComponent = ({ signout }) => {
   const [iserror, setIsError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [userType, setUserType] = useState("");
+  const [userData,setUserData]=useState({});
 
   useEffect(() => {
     getUserDetails();
@@ -32,6 +33,7 @@ const MainComponent = ({ signout }) => {
 
       const taData = res.data.responseData;
       setUserType(taData?.user_type);
+      setUserData(taData);
       setIsLoading(false);
     } catch (error) {
       setIsError(error.message);
@@ -52,8 +54,8 @@ const MainComponent = ({ signout }) => {
               <Route path="/taform" element={<StudentNotification />} />
             ) : (
               <>
-                <Route exact path="/" element={<Home />} />
-                <Route path="/home" element={<Home />} />
+                <Route exact path="/" element={<Home data ={userData}/>} />
+                <Route path="/home" element={<Home data ={userData} />} />
                 <Route path="/viewproject" element={<ViewProject />} />
                 <Route path="/tarequest" element={<TAShipRequestList />} />
                 <Route path="/registration" element={<Registration />} />

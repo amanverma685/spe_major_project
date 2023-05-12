@@ -11,6 +11,7 @@ import DisplayTaships from "./StudentScreens/DisplayTaships";
 import StudentNotification from "./StudentScreens/StudentNotification";
 import axios from "axios";
 import { CircularProgress } from "@mui/material";
+import './App.css';
 
 import MainComponent from "./Components/MainComponent";
 function App() {
@@ -21,6 +22,8 @@ function App() {
   useEffect(() => {
     getUserDetails();
   }, []);
+
+
 
   const getUserDetails = async () => {
     // console.log("get details called")
@@ -58,7 +61,10 @@ function App() {
   return (
     <>
     {
-      (isLoading===false)?(<Authenticator>
+      (isLoading===false)?(
+        <div >
+          
+            <Authenticator className="container  AuthContainer"  >
         {({ signOut, user }) => {
           sessionStorage.setItem('token', user.signInUserSession.idToken.jwtToken);
           // console.log(user.signInUserSession.idToken.jwtToken)
@@ -72,7 +78,10 @@ function App() {
             </>
           )
         }}
-        </Authenticator>):(<div
+        </Authenticator>
+          
+        </div>
+      ):(<div
           style={{
             position: 'absolute',
             top: '50%',

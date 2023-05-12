@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Swal from 'sweetalert2';
 
 export default function StudentFormTA(props) {
   const { onClose, show, data } = { ...props };
@@ -36,7 +37,16 @@ export default function StudentFormTA(props) {
         console.log(res.data);
         window.location.reload(true);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+
+        return Swal.fire({
+          title: 'Success Failed!',
+          text: "Already Applied for this subject",
+          icon: 'warning',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK'
+        });
+      });
 
     console.log("form submitted");
   };

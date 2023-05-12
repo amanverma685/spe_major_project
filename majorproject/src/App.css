@@ -1,10 +1,9 @@
-body {
-  margin: 0;
-  padding: 0;
-}
-.App {
-  display: flex;
-}
-main {
-  padding: 10px;
+
+
+
+.AuthContainer {
+  background-image: url('./assets/3776134.jpg');
+  background-size:contain;
+  background-position: center;
+  padding: auto;
 }

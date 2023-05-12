@@ -79,6 +79,11 @@ function SideNavBar(props) {
                     <HomeIcon />
                     Home
                   </MenuItem>
+                  
+                  <MenuItem component={<Link to={"/tarequest"} />}>
+                    <HomeIcon />
+                    Request For Taship
+                  </MenuItem>
 
                   <MenuItem component={<Link to={"/tavacancylist"} />}>
                     {" "}

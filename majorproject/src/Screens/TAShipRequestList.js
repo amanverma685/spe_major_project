@@ -1,6 +1,8 @@
 import React ,{useState,useEffect} from 'react'
 import SampleData from '../SampleData'
 import DisplayCard from './DisplayCard';
+import axios from "axios"
+import Swal from 'sweetalert2';
 
 function TAShipRequestList() {
   const [value, setvalue] = useState(0)
@@ -8,9 +10,33 @@ function TAShipRequestList() {
   const [requested, setRequested] = useState([]);
 
   useEffect(() => {
-    setRequested(SampleData);
-    console.log(requested);
+    setRequested(SampleData)
+    // getListOfStudentRequestedForTA()
   }, []);
+
+  const getListOfStudentRequestedForTA = async () => {
+   
+
+    const token = sessionStorage.getItem("token");
+    // console.log(token);
+    await axios
+      .get(
+        `https://qq83tpt61e.execute-api.ap-south-1.amazonaws.com/dev/ta_request/list_of_students_requested_for_ta`,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+        setRequested(res.data)
+      })
+      .catch((err) => console.log(err));
+    
+  };
+
+  
   return (
    
     <div style={{

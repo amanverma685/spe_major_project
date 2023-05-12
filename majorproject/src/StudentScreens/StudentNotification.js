@@ -50,7 +50,7 @@ export default function () {
   };
 
   return (
-    <div className="overflow-auto" style={{ height: "90vh" }}>
+    <div className="overflow-auto" >
       {/* Modal */}
       {show === true && (
         <div>
@@ -127,7 +127,7 @@ export default function () {
               {taShip?.map((item, index) => {
                 return (
                   <>
-                    <tr key={index}>
+                    <tr key={item.ta_vac_id}>
                       <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
                         {item.subject}
                       </td>

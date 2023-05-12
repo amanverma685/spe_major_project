@@ -11,6 +11,7 @@ export default function StudentDetails(props) {
   const handlereject = () => {
     console.log("rejected");
   };
+  
 
   // if(!show){
   //     return null
@@ -79,3 +80,6 @@ export default function StudentDetails(props) {
     </div>
   );
 }
+
+
+

@@ -72,7 +72,8 @@ function SideNavBar(props) {
                 >
                   <MenuIcon />
                 </button>
-                <div>Professor Logged</div>
+                Professor Logged
+              
 
                 <Menu className="menu-of-sidebar">
                   <MenuItem component={<Link to={"/home"} />}>
@@ -108,8 +109,8 @@ function SideNavBar(props) {
                   }}
                 >
                   <MenuIcon />
-                </button>
-                <div>Student Logged</div>
+                </button>Student Logged
+                
                 <Menu className="menu-of-sidebar">
   
                   <MenuItem component={<Link to={"/taform"} />}>

@@ -29,7 +29,7 @@
     "build:dev": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "export":"next export"
+    "export":"npx next export"
   },
   "eslintConfig": {
     "extends": [

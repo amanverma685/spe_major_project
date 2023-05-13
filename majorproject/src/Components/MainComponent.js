@@ -8,6 +8,7 @@ import StudentNotification from "../StudentScreens/StudentNotification";
 import SideNavBar from "./SideNavBar";
 import TaVacancyList from "../Screens/TaVacancyList";
 import axios from "axios"
+import StudentHome from "../StudentScreens/StudentHome";
 const MainComponent = ({ signout }) => {
   const [iserror, setIsError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
@@ -51,7 +52,11 @@ const MainComponent = ({ signout }) => {
         <div className="flex-1">
           <Routes>
             {userType === "student" ? (
+              <>
               <Route path="/taform" element={<StudentNotification />} />
+              <Route path="/studenthome" element={<StudentHome />} />
+              </>
+            
             ) : (
               <>
                 <Route exact path="/" element={<Home data ={userData}/>} />

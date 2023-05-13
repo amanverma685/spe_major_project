@@ -1,15 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import StudentDetails from "./StudentDetails";
+
 
 export default function DisplayCard(props) {
   const [show, setShow] = useState(false);
   const { onClose, value, id, name } = { ...props };
-  // console.log(props)
+  const [initials, setInitials] = useState("");
+   let fullName=props.e.fname + " " + props.e.lname
+  //  console.log("Name", fullName)
+  useEffect(() => {
+
+    const getInitials = () => {
+      return fullName
+        .split(" ")
+        .map((name) => name[0])
+        .join("");
+    };
+    setInitials(getInitials());
+  }, [fullName]);
+
 
   return (
-    <div className="flex items-center shadow-lg shadow-black bg-white bg-opacity-25  rounded-20 m-4">
-      {/* <img className="w-10 h-10 rounded-full" src={props.e.url} alt="Rounded avatar"/> */}
-
+    <div className="flex items-center shadow-lg shadow-black bg-white bg-opacity-25  rounded-20 m-4 ">
+      <div className="bg-slate-900 text-white font-bold  ml-2 rounded-full w-16 h-12 flex justify-center items-center">
+      {initials}
+    </div>
       <div className=" flex flex-row ">
         <div className="px-4 py-2 m-2 flex-1 ">
           <div className="text-sm ">Roll Number: {props.e.roll_number}</div>

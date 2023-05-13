@@ -8,6 +8,10 @@ import axios from 'axios'
 function Home(props) {
   const [show, setShow] = useState(false);
   const [userData,setUserData]=useState(props.data);
+  const token=sessionStorage.getItem("token");
+
+  const[cardData,setCardData]=useState("")
+  
 
   const data = {
     labels: ["Jan", "Feb", "Mar", "Apr", "May"],
@@ -28,8 +32,32 @@ function Home(props) {
       text: "number of request/month",
     },
   };
+
+  useEffect(() => {
+    getData()
+  }, [])
+  
+const getData = async()=>{
+
+  try {
+    const res = await axios.get(
+      "https://b1upqyjnvk.execute-api.ap-south-1.amazonaws.com/dev/ta_management_metrics/professor_dashboard_metrics",
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    ); 
+    console.log(res.data.responseData);
+    setCardData(res.data.responseData);
+  }  
+  catch (err){
+console.log(err)
+  } 
+
+}
   return (
-      <div className="container h-90% w-90% ">
+      <div className="container ">
         <div className="flex-row ml-3 mb-3">
           <text className="font-bold text-3xl ">Welcome Back, <text className="font-bold text-2xl text-gray-700" >{userData.fname}</text></text>
         </div>
@@ -40,7 +68,7 @@ function Home(props) {
               Number of request received
             </div>
             <h2 className="block mt-1 text-lg leading-tight font-medium text-black ">
-              20
+              {cardData?.pending}
             </h2>
           </div>
         </div>
@@ -50,7 +78,7 @@ function Home(props) {
               Number of accepted request
             </div>
             <h2 className="block mt-1 text-lg leading-tight font-medium text-black ">
-              20
+              {cardData?.accepted}
             </h2>
           </div>
         </div>
@@ -60,17 +88,17 @@ function Home(props) {
               Number of rejected request
             </div>
             <h2 className="block mt-1 text-lg leading-tight font-medium text-black ">
-              20
+              {cardData?.rejected}
             </h2>
           </div>
         </div>
       </div>
-      <div className=" mt-4 mb-11">
+      <div className=" mt-4 mb-11 h-1/2  w-5/6">
         <Line data={data} options={options} />
       </div>
       <div className="absolute bottom-3 right-3">
         <button
-          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full "
+          className="bg-blue-500 hover:bg-blue-600 text-white font-semi  ml-1 py-2 px-4 rounded-lg"
           onClick={() => {
             setShow(true);
           }}

@@ -26,9 +26,7 @@ export default[
         "deadline":"05-05-2024"
     },
     {
-        "subject":[{"label":"SPE","value":"SPE"},
-        {"label":"ESD","value":"ESD"},
-    ],   
+        "subject":[{"label":"SPE","value":"SPE"}],        
         "eligibility":"Have experience in Development and devops related problems and minimum grade for qualifying is 3.0 CGPA",
         "minimum_grade":3.2,
         "semester":3,

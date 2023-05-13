@@ -49,6 +49,7 @@ export default function StudentDetails(props) {
         if (result.isConfirmed) {
           // Handle confirm button click
           onClose(false)
+          window.location.reload(true);
           
         } 
         });

@@ -13,22 +13,20 @@ function TAShipRequestList() {
     // setRequested(SampleData)
     // console.log("Sample Data",SampleData)
     getListOfStudentRequestedForTA();
-    sortStudentData();
+ 
   }, []);
 
   let acceptedList = [];
   let rejectedList = [];
   let pendingList = [];
   const sortStudentData = () => {
-    console.log("Student Data", requested);
-
     requested?.filter((request) => {
       if (request.request_status === "accepted") {
-        acceptedList.push(requested);
+        acceptedList.push(request);
       } else if (request.request_status === "rejected") {
-        rejectedList.push(requested);
+        rejectedList.push(request);
       } else if (request.request_status === "pending") {
-        pendingList.push(requested);
+        pendingList.push(request);
       }
     });
     // console.log("Pending list",pendingList)
@@ -63,6 +61,8 @@ function TAShipRequestList() {
         flex: 1,
       }}
     >
+      {   
+      sortStudentData()}
       <nav className="bg-gray-300 py-2">
         <ul className="flex justify-around">
           <li className="mx-4">
@@ -110,6 +110,7 @@ function TAShipRequestList() {
             </h1>
             <div className="my-3">
              { console.log("Pending list",pendingList)}
+
               {pendingList?.map((e, i) => {
                 return <DisplayCard e={e} key={i} value={0} />;
               })}
@@ -120,7 +121,7 @@ function TAShipRequestList() {
       {value === 1 && (
         <>
           <div className="overflow-auto" style={{ height: "90vh" }}>
-            <h1 className="font-semibold">
+            <h1 className="font-semibold text-center m-3">
               {" "}
               List of student accepted for TAship
             </h1>
@@ -136,8 +137,8 @@ function TAShipRequestList() {
       {value === 2 && (
         <>
           <div className="overflow-auto" style={{ height: "90vh" }}>
-            <h1 className="font-semibold">
-              {" "}
+            <h1 className="font-semibold text-center m-3">
+            {console.log("Rejected list",rejectedList)}
               List of student rejected for TAship
             </h1>
             <div className="my-3">

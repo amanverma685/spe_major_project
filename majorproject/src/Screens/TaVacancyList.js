@@ -4,6 +4,7 @@ import StudentFormTA from '../StudentScreens/StudentFormTA';
 import TARequirements from './TARequirements';
 import { CircularProgress } from "@mui/material";
 import Swal from 'sweetalert2';
+import TaVacancyDisplayData from './TaVacancyDisplayData';
 
 export default function TaVacancyList() {
     const [TARequirement, setTArequirement] = useState({
@@ -23,7 +24,9 @@ export default function TaVacancyList() {
       const [iserror, setIsError] = useState("");
       const token = sessionStorage.getItem("token");
       const [show, setShow] = useState(false);
+      const [show1, setShow1] = useState(false);
       const[modalData,setModalData]=useState({})
+      const[modalData1,setModalData1]=useState({})
     //   const [refresh,setRefresh] = useState(false);
     
       useEffect(() => {
@@ -110,6 +113,13 @@ export default function TaVacancyList() {
                 </div>
 
              }
+
+            {
+               (show1===true) && 
+               <div>
+               <TaVacancyDisplayData show={show} onClose={setShow1} data={modalData}/>
+               </div>
+            }
          
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
@@ -126,12 +136,7 @@ export default function TaVacancyList() {
             >
               Number of Vacancy
             </th>
-            <th
-              scope="col"
-              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-            >
-              Elligibity
-            </th>
+          
             <th
               scope="col"
               className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
@@ -144,24 +149,14 @@ export default function TaVacancyList() {
             >
               Semester
             </th>
-            <th
-              scope="col"
-              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-            >
-              Remarks
-            </th>
+            
             <th
               scope="col"
               className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
             >
               Current registered
             </th>
-            <th
-              scope="col"
-              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-            >
-              Status
-            </th>
+            
             <th
               scope="col"
               className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
@@ -187,24 +182,18 @@ export default function TaVacancyList() {
               <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
                 {item.number_of_vacancy}
               </td>
-              <td className="px-6 py-4 whitespace-wrap  bg-white bg-opacity-25">
-                {item.eligibility}
-              </td>
+             
               <td className="px-6 py-4 whitespace-wrap  bg-white bg-opacity-25">
                 {item.minimum_grade}
               </td>
               <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
                 {item.semester}
               </td>
-              <td className="px-6 py-4 whitespace-wrap  bg-white bg-opacity-25">
-                {item.remarks}
-              </td>
+             
               <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
                 {item.current_registered}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
-                {item.status}
-              </td>
+              
               <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
                 {new Date(item.deadline).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' }).replace(/(\d+)(st|nd|rd|th)/, "$1")}
               </td>
@@ -212,7 +201,7 @@ export default function TaVacancyList() {
            
            
               <button
-                className="bg-blue-500 hover:bg-blue-600 text-white  py-2 px-4 rounded-full "
+                className="bg-blue-500 hover:bg-blue-600 text-white font-semi  ml-1 py-2 px-4 rounded-lg"
                 onClick={() => {
                 setShow(true);
                 setModalData(item)
@@ -221,7 +210,16 @@ export default function TaVacancyList() {
                 Edit
              </button>
              <button
-                className="bg-blue-500 mx-2 hover:bg-blue-600 text-white  py-2 px-4 rounded-full "
+                className="bg-blue-500 hover:bg-blue-600 text-white font-semi  ml-1 py-2 px-4 rounded-lg "
+                onClick={() => {
+                setShow1(true);
+                setModalData(item)
+                }}
+                 >
+                View
+             </button>
+             <button
+                className="bg-blue-500 hover:bg-blue-600 text-white font-semi  ml-1 py-2 px-4 rounded-lg"
                 onClick={() => {
                 deleteTAVacancy(item.ta_vac_id)
                 

@@ -30,6 +30,7 @@ function App() {
     setIsLoading(true);
     const token = sessionStorage.getItem("token");
     const user_id = sessionStorage.getItem("user_id");
+    // console.log(token)
 
     let config = {
       method: "get",

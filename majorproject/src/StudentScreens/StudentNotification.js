@@ -5,6 +5,7 @@ import StudentFormTA from "./StudentFormTA";
 import { CircularProgress } from "@mui/material";
 
 import axios from "axios";
+import TaVacancyDisplayData from "../Screens/TaVacancyDisplayData";
 
 export default function () {
   const [taShip, settaShip] = useState(null);
@@ -13,6 +14,9 @@ export default function () {
   const [show, setShow] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [modalData, setModalData] = useState({});
+  const [show1, setShow1] = useState(false);
+
+  const [modalData1, setModalData1] = useState({});
 
   useEffect(() => {
     getTaship();
@@ -50,11 +54,20 @@ export default function () {
   };
 
   return (
-    <div className="overflow-auto" >
+    <div className="overflow-auto">
       {/* Modal */}
       {show === true && (
         <div>
           <StudentFormTA onClose={setShow} data={modalData} show={show} />
+        </div>
+      )}
+      {show1 === true && (
+        <div>
+          <TaVacancyDisplayData
+            show={show}
+            onClose={setShow1}
+            data={modalData}
+          />
         </div>
       )}
       <table className="min-w-full divide-y divide-gray-200">
@@ -72,12 +85,7 @@ export default function () {
             >
               Number of Vacancy
             </th>
-            <th
-              scope="col"
-              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-            >
-              Elligibity
-            </th>
+
             <th
               scope="col"
               className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
@@ -90,24 +98,14 @@ export default function () {
             >
               Semester
             </th>
-            <th
-              scope="col"
-              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-            >
-              Remarks
-            </th>
+
             <th
               scope="col"
               className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
             >
               Current registered
             </th>
-            <th
-              scope="col"
-              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-            >
-              Status
-            </th>
+
             <th
               scope="col"
               className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
@@ -134,24 +132,18 @@ export default function () {
                       <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
                         {item.number_of_vacancy}
                       </td>
-                      <td className="px-6 py-4 whitespace-wrap  bg-white bg-opacity-25">
-                        {item.eligibility}
-                      </td>
+
                       <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
                         {item.minimum_grade}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
                         {item.semester}
                       </td>
-                      <td className="px-6 py-4 whitespace-wrap  bg-white bg-opacity-25">
-                        {item.remarks}
-                      </td>
+
                       <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
                         {item.current_registered}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
-                        {item.status}
-                      </td>
+
                       <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
                         {new Date(item.deadline)
                           .toLocaleDateString("en-US", {
@@ -161,9 +153,19 @@ export default function () {
                           })
                           .replace(/(\d+)(st|nd|rd|th)/, "$1")}
                       </td>
+
                       <td className="px-6 py-4 whitespace-nowrap  bg-white bg-opacity-25">
                         <button
-                          className="bg-blue-500 hover:bg-blue-700 text-white font-semi justify-end rounded-lg w-40 h-10"
+                          className="bg-blue-500 hover:bg-blue-600 text-white font-semi  ml-1 py-2 px-4 rounded-lg "
+                          onClick={() => {
+                            setShow1(true);
+                            setModalData(item);
+                          }}
+                        >
+                          View
+                        </button>
+                        <button
+                          className="bg-blue-500 hover:bg-blue-700 text-white font-semi  ml-1 py-2 px-4 rounded-lg "
                           onClick={() => {
                             setModalData(item);
                             setShow(true);

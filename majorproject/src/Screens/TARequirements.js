@@ -89,7 +89,7 @@ export default function (props) {
       
       return Swal.fire({
         title: 'Success!',
-        text: 'TA Vacancy has been added successfully.',
+        text: 'TA Vacancy has been editted successfully.',
         icon: 'success',
         confirmButtonColor: '#3085d6',
         confirmButtonText: 'OK'

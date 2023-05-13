@@ -1,0 +1,6 @@
+FROM node:alpine3.10
+WORKDIR /majorproject
+COPY ./package.json /majorproject
+RUN npm install
+COPY . /majorproject
+CMD ["npm","start"]

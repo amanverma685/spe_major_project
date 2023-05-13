@@ -27,11 +27,25 @@ function Home(props) {
     ],
   };
   const options = {
-    title: {
-      display: true,
-      text: "number of request/month",
+    
+    scales: {
+      y: {
+        title: {
+          display: true,
+          text: "Number of request",
+        },
+        min: 0,
+        max: 15,
+      },
+      x: {
+        title: {
+          display: true,
+          text: "Month",
+        },
+      },
     },
   };
+
 
   useEffect(() => {
     getData()

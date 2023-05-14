@@ -53,8 +53,9 @@ const MainComponent = ({ signout }) => {
           <Routes>
             {userType === "student" ? (
               <>
+               <Route path="/studenthome" element={<StudentHome />} />
               <Route path="/taform" element={<StudentNotification />} />
-              <Route path="/studenthome" element={<StudentHome />} />
+             
               </>
             
             ) : (

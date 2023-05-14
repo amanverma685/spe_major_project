@@ -35,6 +35,13 @@ export default function StudentFormTA(props) {
       )
       .then((res) => {
         console.log(res.data);
+        return Swal.fire({
+          title: 'Success',
+          text: "Successfully applied for the TAship",
+          icon: 'success',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK'
+        });
         window.location.reload(true);
       })
       .catch((err) => {

@@ -90,7 +90,7 @@ function SideNavBar(props) {
                     TA Vacancy List
                   </MenuItem>
                   <Button
-                    className="signout bg-black rounded-sm h-10 w-30 text-white  absolute bottom-0 left-10"
+                    className="signout bg-black rounded-sm h-10 w-30 text-white top-80 left-10"
                     onClick={props.signOut}
                   >
                     Sign out
@@ -126,7 +126,7 @@ function SideNavBar(props) {
                   </MenuItem>
 
                   <Button
-                    className="signout bg-black rounded-sm h-10 w-30 text-white  absolute bottom-0 left-10"
+                    className="signout bg-black rounded-sm h-10 w-30 text-white top-80 left-10"
                     onClick={props.signOut}
                   >
                     Sign out

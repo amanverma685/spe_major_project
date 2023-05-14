@@ -73,7 +73,7 @@ console.log(err)
   return (
       <div className="container ">
         <div className="flex-row ml-3 mb-3">
-          <text className="font-bold text-3xl ">Welcome Back, <text className="font-bold text-2xl text-gray-700" >{userData.fname}</text></text>
+          <text className="font-bold text-3xl ">Welcome Back, <text className="font-bold text-2xl text-gray-700" >{userData.fname}!</text></text>
         </div>
       <div className="grid grid-cols-3 gap-4">
         <div className="max-w-md mx-auto bg-pink-200 rounded-xl shadow-md overflow-hidden ">
@@ -112,7 +112,7 @@ console.log(err)
       </div>
       <div className="absolute bottom-3 right-3">
         <button
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semi  ml-1 py-2 px-4 rounded-lg"
+          className="bg-blue-500 hover:bg-blue-600 text-white font-semi  ml-1 py-2 px-4  mb-8 mr-8 rounded-lg"
           onClick={() => {
             setShow(true);
           }}

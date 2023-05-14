@@ -85,7 +85,7 @@ function SideNavBar(props) {
                   </MenuItem>
 
                   <MenuItem component={<Link to={"/tavacancylist"} />}>
-                    {" "}
+                  
                     <PersonAddIcon />
                     TA Vacancy List
                   </MenuItem>

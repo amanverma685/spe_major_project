@@ -4,6 +4,7 @@ import Chart from "chart.js/auto";
 import AddIcon from "@mui/icons-material/Add";
 import TARequirements from "./TARequirements";
 import axios from 'axios'
+import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
 
 function Home(props) {
   const [show, setShow] = useState(false);
@@ -73,7 +74,7 @@ console.log(err)
   return (
       <div className="container ">
         <div className="flex-row ml-3 mb-3">
-          <text className="font-bold text-3xl ">Welcome Back, <text className="font-bold text-2xl text-gray-700" >{userData.fname}!</text></text>
+          <text className="font-bold text-3xl ">Welcome Back, <text className="font-bold text-2xl text-gray-700" >{userData.fname} <SentimentSatisfiedAltIcon></SentimentSatisfiedAltIcon></text></text>
         </div>
       <div className="grid grid-cols-3 gap-4">
         <div className="max-w-md mx-auto bg-pink-200 rounded-xl shadow-md overflow-hidden ">

@@ -64,8 +64,8 @@ function App() {
     {
       (isLoading===false)?(
         <div >
-          
-            <Authenticator className="container  AuthContainer"  >
+            <Authenticator className="container  AuthContainer">
+            
         {({ signOut, user }) => {
           sessionStorage.setItem('token', user.signInUserSession.idToken.jwtToken);
           // console.log(user.signInUserSession.idToken.jwtToken)

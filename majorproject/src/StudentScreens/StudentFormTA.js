@@ -83,6 +83,7 @@ export default function StudentFormTA(props) {
                     name="roll_number"
                     value={student.roll_number}
                     onChange={onChange}
+                    required
                   />
                 </div>
                 <div className="mb-1">
@@ -118,6 +119,7 @@ export default function StudentFormTA(props) {
                     name="grade"
                     value={student.grade}
                     onChange={onChange}
+                    required
                   />
                 </div>
                 <div className="mb-1">

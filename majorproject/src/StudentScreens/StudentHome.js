@@ -80,14 +80,14 @@ export default function StudentHome() {
       setIsLoading(false);
     }
   };
-  // const subjects = ["SPE", "ESD", "SS"];
+
 
   return (
     <div className="container overflow-auto">
       <div className="bg-blue-100 p-8 h-full">
         <h2 className="text-3xl font-bold mb-4">
           Welcome back, {studentData.fname}{" "}
-          <SentimentSatisfiedAltIcon></SentimentSatisfiedAltIcon>
+          <SentimentSatisfiedAltIcon/>
         </h2>
         <div className="flex flex-row">
           <div className=" flex-1">
@@ -119,7 +119,7 @@ export default function StudentHome() {
             <div className="max-w-md mx-auto bg-pink-200 rounded-xl shadow-md overflow-hidden mb-3">
               <div className="p-4 uppercase tracking-wide text-sm text-black font-semibold">
                 Number of accepted request
-                <h2 className="block mt-1 text-lg leading-tight  justify-center font-medium text-black ">
+                <h2 className="block mt-1 text-sm leading-tight  justify-center font-medium text-black ">
                   {dashboardData.accepted}
                 </h2>
               </div>
@@ -127,7 +127,7 @@ export default function StudentHome() {
             <div className="max-w-md mx-auto bg-pink-200 rounded-xl shadow-md overflow-hidden mb-3">
               <div className="p-4 uppercase tracking-wide text-sm text-black font-semibold">
                 Number of TA ship applied
-                <h2 className="block mt-1 text-lg leading-tight  justify-center font-medium text-black ">
+                <h2 className="block mt-1 text-sm leading-tight  justify-center font-medium text-black ">
                   {dashboardData.rejected}
                 </h2>
               </div>
@@ -143,7 +143,7 @@ export default function StudentHome() {
                   {subject.length === 0 ? (
                     <div className=" font-bold text-sm ">
                       You are not selected for any subject{" "}
-                      <SentimentVeryDissatisfiedIcon></SentimentVeryDissatisfiedIcon>
+                      <SentimentVeryDissatisfiedIcon/>
                     </div>
                   ) : (
                     subject?.map((subject) => (

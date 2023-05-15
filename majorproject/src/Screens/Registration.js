@@ -215,7 +215,9 @@ function Registration({signOut}) {
                           name="fname"
                           required
                           value={professor.fname}
+                          
                           onChange={onChange}
+                  
                         />
                       </div>
                       <div className="input-box">

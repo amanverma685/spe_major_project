@@ -9,9 +9,9 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from "@mui/icons-material/Home";
-import AddIcon from "@mui/icons-material/Add";
-import InsightsIcon from "@mui/icons-material/Insights";
+import ListIcon from "@mui/icons-material/List";
 import { Button } from "@mui/material";
+import AddTaskIcon from "@mui/icons-material/AddTask";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import axios from "axios";
 import { CircularProgress } from "@mui/material";
@@ -80,13 +80,12 @@ function SideNavBar(props) {
                   </MenuItem>
 
                   <MenuItem component={<Link to={"/tarequest"} />}>
-                    <HomeIcon />
-                    Request For Taship
+                    <AddTaskIcon/>
+                    Request
                   </MenuItem>
 
                   <MenuItem component={<Link to={"/tavacancylist"} />}>
-                  
-                    <PersonAddIcon />
+                    <ListIcon></ListIcon>
                     TA Vacancy List
                   </MenuItem>
                   <Button
@@ -121,7 +120,7 @@ function SideNavBar(props) {
                   </MenuItem>
 
                   <MenuItem component={<Link to={"/taform"} />}>
-                    <PersonAddIcon />
+                   <ListIcon/>
                     TA Form
                   </MenuItem>
 
